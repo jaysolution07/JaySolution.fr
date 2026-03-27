@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+  <title>JaySolution</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green-deep:   #071f18;
+      --green-mid:    #0d3d2c;
+      --green-rich:   #0f5c42;
+      --green-vivid:  #19c37d;
+      --green-glow:   #4fffb0;
+      --gold:         #c8a84b;
+      --cream:        #f5efe6;
+      --white:        #ffffff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--green-deep);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* ── FLOATING BRAND ── */
+    .floating-brand {
+      position: fixed;
+      top: 22px;
+      left: 28px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 3px;
+      color: var(--green-vivid);
+      z-index: 1000;
+      text-shadow: 0 0 12px rgba(25,195,125,0.5);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 40px 60px;
+      position: relative;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 10%, rgba(15,92,66,0.6) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(25,195,125,0.08) 0%, transparent 60%),
+        var(--green-deep);
+      overflow: hidden;
+    }
+
+    /* animated rings */
+    .hero-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(25,195,125,0.12);
+      animation: expandRing 8s ease-out infinite;
+    }
+    .hero-ring:nth-child(1) { width: 400px; height: 400px; animation-delay: 0s; }
+    .hero-ring:nth-child(2) { width: 650px; height: 650px; animation-delay: 2s; }
+    .hero-ring:nth-child(3) { width: 900px; height: 900px; animation-delay: 4s; }
+    @keyframes expandRing {
+      0%   { opacity: 0.6; transform: scale(0.85); }
+      100% { opacity: 0;   transform: scale(1.15); }
+    }
+
+    .hero-logo-wrap {
+      opacity: 0;
+      animation: fadeUp 0.9s 0.4s forwards;
+    }
+    .hero-svg {
+      width: clamp(220px, 45vw, 320px);
+      height: auto;
+      filter: drop-shadow(0 0 28px rgba(25,195,125,0.3));
+    }
+
+    .hero-brand {
+      text-align: center;
+      margin-top: 8px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.6s forwards;
+    }
+
+    .hero-name {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: clamp(36px, 7vw, 62px);
+      color: #f5efe6;
+      letter-spacing: 1px;
+      line-height: 1;
+      margin: 0 0 10px;
+    }
+
+    .hero-tagline {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 400;
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: var(--green-vivid);
+      text-transform: none;
+      margin-bottom: 32px;
+    }
+
+    .hero-divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--green-vivid), var(--gold));
+      margin: 32px auto;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.8s forwards;
+    }
+.hero-description {
+  max-width: 700px;
+  margin: 28px auto 0;
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.85);
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+
+.hero-description.secondary {
+  margin-bottom: 10px;
+  margin-top: 14px;
+  font-size: 15px;
+  color: rgba(255,255,255,0.6);
+}
+
+    .hero-cta {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.9s 1s forwards;
+
+  margin-top: 40px; 
+}
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: none;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green-vivid), #0fa86a);
+      color: white;
+      box-shadow: 0 4px 24px rgba(25,195,125,0.35);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(25,195,125,0.5);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.4);
+      transform: translateY(-3px);
+    }
+
+    /* ── SECTION ── */
+    section { padding: 100px 40px; }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--green-vivid);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.1;
+      max-width: 560px;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--green-glow);
+    }
+
+    /* ── APPS GRID ── */
+    .apps-section { background: var(--green-deep); }
+
+    .apps-header {
+      max-width: 1200px;
+      margin: 0 auto 60px;
+    }
+
+    #apps {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+    }
+
+    .card {
+  background: linear-gradient(160deg, #102e24, #081a14);
+  backdrop-filter: blur(10px);
+      border: 1px solid rgba(25,195,125,0.12);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(25,195,125,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(25,195,125,0.35);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(25,195,125,0.1);
+    }
+
+   .card-img-wrap {
+  position: relative;
+  overflow: hidden;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(25,195,125,0.12) 0%,
+    rgba(0,0,0,0) 70%
+  );
+}
+
+    .card-img-wrap img {
+  filter: drop-shadow(0 0 18px rgba(25,195,125,0.35));
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* ← CHANGEMENT ICI */
+  transition: transform 0.5s ease;
+  padding: 8px; /* ← AJOUT */
+}
+
+    .card:hover .card-img-wrap img {
+      transform: scale(1.06);
+    }
+
+    .card-img-wrap::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(transparent, #102e24);
+    }
+
+    .card-body { padding: 24px; }
+
+    .card-body h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .card-body p {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 18px;
+    }
+
+    .card iframe {
+  width: 100%;
+  height: 200px;
+  border: none;
+  border-radius: 14px;
+  margin-bottom: 18px;
+  background: #000;
+}
+
+    .card-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .card-actions .btn {
+      flex: 1;
+      justify-content: center;
+      font-size: 12px;
+      padding: 11px 16px;
+    }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      background:
+        linear-gradient(135deg, #0f5c42 0%, #0d3d2c 100%);
+      border-top: 1px solid rgba(25,195,125,0.15);
+      border-bottom: 1px solid rgba(25,195,125,0.15);
+    }
+
+    .cta-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .cta-inner h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(28px, 4vw, 44px);
+      margin-bottom: 14px;
+    }
+
+    .cta-inner p {
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 40px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 1px;
+    }
+
+    /* ── MODAL ── */
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(5,15,12,0.85);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    .overlay.active { display: flex; }
+
+    .modal {
+      background: linear-gradient(145deg, #0f2e23, #091c15);
+      border: 1px solid rgba(25,195,125,0.2);
+      border-radius: 24px;
+      padding: 44px;
+      width: 100%;
+      max-width: 440px;
+      position: relative;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+    }
+
+    .modal h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
+
+    .modal-sub {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 28px;
+    }
+
+    .form-group { margin-bottom: 16px; }
+
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(25,195,125,0.2);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: white;
+      font-family: 'Barlow', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--green-vivid);
+    }
+
+    .form-group textarea { height: 110px; resize: vertical; }
+
+    .modal-actions { display: flex; gap: 12px; margin-top: 24px; }
+    .modal-actions .btn { flex: 1; justify-content: center; }
+
+    .close-btn {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: rgba(255,255,255,0.06);
+      border: none;
+      color: rgba(255,255,255,0.5);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .close-btn:hover { background: rgba(255,255,255,0.12); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+#category-filter {
+      margin-top: 32px;
+      padding: 12px 20px;
+      border-radius: 50px;
+      border: 1px solid rgba(25,195,125,0.35);
+      background: rgba(25,195,125,0.08);
+      color: white;
+      font-family: 'Barlow', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+      padding-right: 40px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2319c37d' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      transition: border-color 0.3s, background-color 0.3s;
+    }
+    #category-filter:hover,
+    #category-filter:focus {
+      border-color: var(--green-vivid);
+      background-color: rgba(25,195,125,0.14);
+    }
+    #category-filter option {
+      background: #0d3d2c;
+      color: white;
+    }
+/* ── LEGAL ── */
+.legal-section {
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.75);
+  font-size: 14px;
+}
+.legal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-top: 40px;
+}
+.legal-section h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: var(--white);
+}
+
+.legal-section p {
+  margin-bottom: 14px;
+}
+
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links a {
+  color: rgba(255,255,255,0.4);
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.footer-links a:hover {
+  color: var(--green-vivid);
+}
+    @media (max-width: 640px) {
+      .hero { padding: 120px 24px 60px; }
+      section { padding: 70px 24px; }
+      .modal { margin: 20px; padding: 32px 24px; }
+    }
+@media (max-width: 768px) {
+  .legal-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+  </style>
+</head>
+<body>
+
+<!-- Floating brand -->
+<div class="floating-brand">JaySolution</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
+
+  <!-- Icône seule -->
+  <div class="hero-logo-wrap">
+    <svg class="hero-svg" viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="150" cy="118" r="108" fill="none" stroke="#19c37d" stroke-width="3" stroke-dasharray="530 85" stroke-dashoffset="200" stroke-linecap="round"/>
+      <circle cx="150" cy="118" r="82"  fill="none" stroke="#19c37d" stroke-width="2" stroke-dasharray="400 58" stroke-dashoffset="152" stroke-linecap="round"/>
+      <rect x="92" y="74" width="116" height="78" rx="9" fill="none" stroke="#19c37d" stroke-width="3.5"/>
+      <line x1="150" y1="152" x2="150" y2="172" stroke="#19c37d" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="130" y1="172" x2="170" y2="172" stroke="#19c37d" stroke-width="3.5" stroke-linecap="round"/>
+      <rect x="103" y="85" width="30" height="24" rx="4" fill="#19c37d" opacity="0.88"/>
+      <line x1="142" y1="91" x2="198" y2="91" stroke="#19c37d" stroke-width="3" stroke-linecap="round"/>
+      <line x1="142" y1="101" x2="194" y2="101" stroke="#19c37d" stroke-width="3" stroke-linecap="round"/>
+      <line x1="103" y1="118" x2="198" y2="118" stroke="#19c37d" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+      <line x1="103" y1="130" x2="175" y2="130" stroke="#19c37d" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+    </svg>
+  </div>
+
+  <!-- Texte séparé sous l'icône -->
+  <div class="hero-brand">
+    <h1 class="hero-name">JaySolution</h1>
+    <p class="hero-tagline">CRÉATEUR DE SOLUTIONS PERSONNALISÉES</p>
+  </div>
+ <p class="hero-description">
+  Des solutions digitales professionnelles, standards et sur mesure, conçues pour optimiser vos opérations.
+</p>
+
+<p class="hero-description secondary">
+  JaySolution développe des outils fiables, simples et efficaces, pensés pour s’adapter à vos process métier,
+  réduire les tâches inutiles et améliorer votre performance au quotidien.
+</p>
+
+<div class="hero-cta">
+    <button class="btn btn-primary" onclick="openForm()">Demander un devis</button>
+    <a href="#apps" class="btn btn-outline">Voir les apps ↓</a>
+  </div>
+</section>
+
+<!-- APPS -->
+<section class="apps-section" id="apps-section">
+ <div class="apps-header reveal">
+  <p class="section-label">Nos réalisations</p>
+  <h2 class="section-title">Des applications <em>qui font la différence</em></h2>
+  <select id="category-filter">
+    <option value="">Toutes les catégories</option>
+  </select>
+</div>
+  <div id="apps"></div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="cta-inner reveal">
+    <h2>Votre projet, notre expertise</h2>
+    <p>Chaque métier est unique. Je conçois des outils digitaux taillés exactement pour vous — ergonomiques, efficaces, évolutifs.</p>
+    <button class="btn btn-primary" onclick="openForm()">Commencer mon projet →</button>
+  </div>
+</section>
+<section id="legal">
+  <div class="legal-section reveal">
+
+    <div class="legal-grid">
+
+      <!-- COLONNE GAUCHE -->
+      <div>
+        <h2>Mentions légales</h2>
+
+        <p><strong>Éditeur du site :</strong><br>
+        Samuel Jay<br>
+        Entrepreneur individuel<br>
+        SIRET : 93963162800012<br>
+        Adresse : 07400 SAINT-MARTIN-SUR-LAVEZON<br>
+        Téléphone : 06 77 71 89 14<br>
+        Email : jaysolution07@gmail.com</p>
+
+        <p><strong>Responsable de la publication :</strong><br>
+        Samuel Jay</p>
+
+        <p><strong>Hébergement :</strong><br>
+        GitHub Pages<br>
+        GitHub, Inc.<br>
+        88 Colin P Kelly Jr St, San Francisco, CA 94107, USA</p>
+      </div>
+
+      <!-- COLONNE DROITE -->
+      <div>
+        <h2>Confidentialité</h2>
+
+        <p>Les données collectées via le formulaire de contact (nom, email, message) sont utilisées uniquement pour répondre aux demandes.</p>
+
+        <p>Aucune donnée n’est vendue ou utilisée à des fins commerciales.</p>
+
+        <p>Les informations sont conservées pendant une durée maximale de 12 mois.</p>
+
+        <p>Conformément au RGPD, vous pouvez demander l’accès, la modification ou la suppression de vos données à tout moment en contactant : jaysolution07@gmail.com</p>
+
+        <p><strong>Cookies :</strong><br>
+        Ce site n’utilise pas de cookies à des fins de suivi ou d’analyse.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<footer>
+  © 2025 JaySolution · Tous droits réservés
+  <div class="footer-links">
+    <a href="#legal">Mentions légales</a>
+  </div>
+</footer>
+<!-- MODAL -->
+<div class="overlay" id="overlay" onclick="handleOverlayClick(event)">
+  <div class="modal">
+    <button class="close-btn" onclick="closeForm()">✕</button>
+    <h3>Parlons de votre projet</h3>
+    <p class="modal-sub">Réponse sous 24h</p>
+
+    <div class="form-group">
+      <label>Nom</label>
+      <input id="name" placeholder="Jean Dupont">
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input id="email" type="email" placeholder="jean@email.com">
+    </div>
+    <div class="form-group">
+      <label>Message</label>
+      <textarea id="message" placeholder="Décrivez votre besoin…"></textarea>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="sendForm()">Envoyer →</button>
+      <button class="btn btn-outline" onclick="closeForm()">Annuler</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const API_URL = "https://script.google.com/macros/s/AKfycbykc8cEXF-RteRuRf6DzN-WQqOxihF6MdSosS_FKEiwWoHF212ngv32JKnkzH575yT1/exec";
+
+async function loadApps(){
+  if (API_URL === "URL_APPS_SCRIPT") return;
+
+  try {
+    const res = await fetch(API_URL);
+const contentType = res.headers.get('content-type') || '';
+if (!contentType.includes('application/json')) return;
+
+const data = await res.json();
+
+// ✅ le backend renvoie { apps: [...], categories: [...] }
+const apps       = data.apps       || data; // rétrocompat si tableau direct
+const categories = data.categories || [...new Set(apps.map(a => a.category).filter(Boolean))];
+
+// ✅ remplir le select EN PREMIER
+const select = document.getElementById('category-filter');
+select.innerHTML = '<option value="">Toutes les catégories</option>';
+
+categories.forEach(cat => {
+  const opt = document.createElement('option');
+  opt.value = cat;
+  opt.textContent = cat;
+  select.appendChild(opt);
+});
+
+// ✅ stock + render
+window.ALL_APPS = apps;
+renderApps(apps);
+
+// ✅ filtre
+select.onchange = function(){
+  const value = this.value;
+  if (!value) { renderApps(window.ALL_APPS); return; }
+  renderApps(window.ALL_APPS.filter(app => app.category === value));
+};
+
+observeReveal();
+
+  } catch(e) {
+    console.warn('Apps non chargées:', e);
+  }
+}
+function renderApps(apps){
+  const container = document.getElementById('apps');
+  container.innerHTML = '';
+
+  apps.forEach((app, i) => {
+    const div = document.createElement('div');
+    div.className = 'card reveal';
+
+div.innerHTML = `
+  <div class="card-img-wrap">
+    <img src="${app.image}" alt="${app.name}">
+  </div>
+  <div class="card-body">
+    <h3>${app.name}</h3>
+    <p>${app.description}</p>
+
+    ${extractYouTubeId(app.video) ? `
+  <iframe 
+    src="https://www.youtube.com/embed/${extractYouTubeId(app.video)}"
+    allowfullscreen
+  ></iframe>
+` : `
+  <div style="
+    height:200px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:14px;
+    margin-bottom:18px;
+    background: linear-gradient(145deg,#0a2018,#071912);
+    color: rgba(255,255,255,0.5);
+    font-size:13px;
+    text-align:center;
+    padding:20px;
+  ">
+    🎥 Aucune vidéo disponible pour le moment
+  </div>
+`}
+
+    <div class="card-actions">
+      <button class="btn btn-outline" onclick="window.location.href='tel:${app.phone}'">📞 Appeler</button>
+      ${app.demo ? `<button class="btn btn-outline" onclick="window.open('${app.demo}','_blank')">🚀 Démo</button>` : ''}
+      <button class="btn btn-primary" onclick="openForm('${app.name}')">Contacter</button>
+    </div>
+
+  </div>
+`;
+    container.appendChild(div);
+  });
+observeReveal();
+}
+function extractYouTubeId(url){
+  if(!url) return null;
+
+  let m = url.match(/v=([^&]+)/);
+  if(m) return m[1];
+
+  m = url.match(/youtu\.be\/([^?]+)/);
+  if(m) return m[1];
+
+  // sécurité : si c'est trop court ou bizarre → on refuse
+  if(url.length < 6) return null;
+
+  return url;
+}
+
+function openForm(appName = ""){
+  const modal = document.getElementById('overlay');
+  const title = modal.querySelector('h3');
+  const sub   = modal.querySelector('.modal-sub');
+  const msg   = document.getElementById('message');
+
+  if(appName){
+    title.textContent = appName;
+    sub.textContent   = "Vous êtes intéressé par cette application — réponse sous 24h";
+    msg.placeholder   = `Je souhaite en savoir plus sur ${appName}…`;
+    msg.value         = "";
+  } else {
+    title.textContent = "Parlons de votre projet";
+    sub.textContent   = "Réponse sous 24h";
+    msg.placeholder   = "Décrivez votre besoin…";
+    msg.value         = "";
+  }
+
+  modal.classList.add('active');
+}
+function closeForm(){ document.getElementById('overlay').classList.remove('active'); }
+
+function handleOverlayClick(e){
+  if (e.target === document.getElementById('overlay')) closeForm();
+}
+
+async function sendForm(){
+  const appTitle = document.getElementById('overlay').querySelector('h3').textContent;
+const payload = {
+  name:    document.getElementById('name').value,
+  email:   document.getElementById('email').value,
+  message: document.getElementById('message').value,
+  app:     appTitle !== "Parlons de votre projet" ? appTitle : ""
+};
+  try {
+    await fetch(API_URL, { method:'POST', body: JSON.stringify(payload) });
+  } catch(e) {}
+  alert('✅ Message envoyé ! Je vous répondrai très vite.');
+  closeForm();
+}
+
+// Scroll reveal
+function observeReveal(){
+  const items = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  items.forEach(el => obs.observe(el));
+}
+
+observeReveal();
+loadApps();
+</script>
+</body>
+</html>
