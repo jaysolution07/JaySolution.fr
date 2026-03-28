@@ -511,6 +511,32 @@
       background: #0d3d2c;
       color: white;
     }
+#type-filter {
+  padding: 12px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(25,195,125,0.35);
+  background: rgba(25,195,125,0.08);
+  color: white;
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2319c37d' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+#type-filter:hover, #type-filter:focus {
+  border-color: var(--green-vivid);
+  background-color: rgba(25,195,125,0.14);
+}
+#type-filter option { background: #0d3d2c; color: white; }
 /* ── LEGAL ── */
 .legal-section {
   max-width: 900px;
@@ -615,9 +641,14 @@
  <div class="apps-header reveal">
   <p class="section-label">Nos réalisations</p>
   <h2 class="section-title">Des applications <em>qui font la différence</em></h2>
-  <select id="category-filter">
-    <option value="">Toutes les catégories</option>
-  </select>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:32px">
+    <select id="category-filter">
+      <option value="">Toutes les catégories</option>
+    </select>
+    <select id="type-filter">
+      <option value="">Tous les types</option>
+    </select>
+  </div>
 </div>
   <div id="apps"></div>
 </section>
@@ -723,8 +754,9 @@ if (!contentType.includes('application/json')) return;
 const data = await res.json();
 
 // ✅ le backend renvoie { apps: [...], categories: [...] }
-const apps       = data.apps       || data; // rétrocompat si tableau direct
+const apps       = data.apps       || data;
 const categories = data.categories || [...new Set(apps.map(a => a.category).filter(Boolean))];
+const types      = [...new Set(apps.map(a => a.type).filter(Boolean))];
 
 // ✅ remplir le select EN PREMIER
 const select = document.getElementById('category-filter');
@@ -742,11 +774,24 @@ window.ALL_APPS = apps;
 renderApps(apps);
 
 // ✅ filtre
-select.onchange = function(){
-  const value = this.value;
-  if (!value) { renderApps(window.ALL_APPS); return; }
-  renderApps(window.ALL_APPS.filter(app => app.category === value));
-};
+function getFiltered() {
+  const cat = document.getElementById('category-filter').value;
+  const typ = document.getElementById('type-filter').value;
+  return window.ALL_APPS.filter(app =>
+    (!cat || app.category === cat) &&
+    (!typ || app.type === typ)
+  );
+}
+select.onchange = () => renderApps(getFiltered());
+
+const typeSelect = document.getElementById('type-filter');
+typeSelect.innerHTML = '<option value="">Tous les types</option>';
+types.forEach(t => {
+  const opt = document.createElement('option');
+  opt.value = t; opt.textContent = t;
+  typeSelect.appendChild(opt);
+});
+typeSelect.onchange = () => renderApps(getFiltered());
 
 observeReveal();
 
@@ -795,7 +840,7 @@ div.innerHTML = `
 
     <div class="card-actions">
       <button class="btn btn-outline" onclick="window.location.href='tel:${app.phone}'">📞 Appeler</button>
-      ${app.demo ? `<button class="btn btn-outline" onclick="window.open('${app.demo}','_blank')">🚀 Démo</button>` : ''}
+     ${app.demo ? `<button class="btn btn-outline" onclick="handleDemo('${app.type}','${app.demo}')">${app.type === 'Fichier Excel' ? '📥 Télécharger démo' : '🚀 Démo'}</button>` : ''}
       <button class="btn btn-primary" onclick="openForm('${app.name}')">Contacter</button>
     </div>
 
@@ -873,6 +918,14 @@ function observeReveal(){
 }
 
 observeReveal();
+function handleDemo(type, url) {
+  if (type === 'Fichier Excel') {
+    const a = document.createElement('a');
+    a.href = url; a.download = ''; a.click();
+  } else {
+    window.open(url, '_blank');
+  }
+}
 loadApps();
 </script>
 </body>
