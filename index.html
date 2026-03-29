@@ -317,13 +317,34 @@
       margin-bottom: 8px;
     }
 
-    .card-body p {
-      font-size: 14px;
-      font-weight: 300;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.6);
-      margin-bottom: 18px;
-    }
+  .card-body p {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 10px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-body p.expanded {
+  -webkit-line-clamp: unset;
+}
+
+.read-more {
+  font-size: 12px;
+  color: var(--green-vivid);
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.read-more:hover {
+  text-decoration: underline;
+}
 
     .card iframe {
   width: 100%;
@@ -587,6 +608,9 @@
     gap: 30px;
   }
 }
+.card iframe:empty {
+  display: none;
+}
   </style>
 </head>
 <body>
@@ -640,7 +664,7 @@
 <section class="apps-section" id="apps-section">
  <div class="apps-header reveal">
   <p class="section-label">Nos réalisations</p>
-  <h2 class="section-title">Des applications <em>qui font la différence</em></h2>
+  <h2 class="section-title">Des solutions <em>qui font la différence</em></h2>
   <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:32px">
     <select id="category-filter">
       <option value="">Toutes les catégories</option>
@@ -813,30 +837,16 @@ div.innerHTML = `
   </div>
   <div class="card-body">
     <h3>${app.name}</h3>
-    <p>${app.description}</p>
+    <p class="desc">${app.description}</p>
+<span class="read-more">Afficher plus ↓</span>
 
     ${extractYouTubeId(app.video) ? `
   <iframe 
     src="https://www.youtube.com/embed/${extractYouTubeId(app.video)}"
     allowfullscreen
+    loading="lazy"
   ></iframe>
-` : `
-  <div style="
-    height:200px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:14px;
-    margin-bottom:18px;
-    background: linear-gradient(145deg,#0a2018,#071912);
-    color: rgba(255,255,255,0.5);
-    font-size:13px;
-    text-align:center;
-    padding:20px;
-  ">
-    🎥 Aucune vidéo disponible pour le moment
-  </div>
-`}
+` : ``}
 
     <div class="card-actions">
       <button class="btn btn-outline" onclick="window.location.href='tel:${app.phone}'">📞 Appeler</button>
@@ -873,7 +883,7 @@ function openForm(appName = ""){
 
   if(appName){
     title.textContent = appName;
-    sub.textContent   = "Vous êtes intéressé par cette application — réponse sous 24h";
+    sub.textContent   = "Vous êtes intéressé par cette solution — réponse sous 24h";
     msg.placeholder   = `Je souhaite en savoir plus sur ${appName}…`;
     msg.value         = "";
   } else {
@@ -918,6 +928,20 @@ function observeReveal(){
 }
 
 observeReveal();
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('read-more')) {
+    const btn = e.target;
+    const text = btn.previousElementSibling;
+
+    text.classList.toggle('expanded');
+
+    if (text.classList.contains('expanded')) {
+      btn.textContent = "Afficher moins ↑";
+    } else {
+      btn.textContent = "Afficher plus ↓";
+    }
+  }
+});
 function handleDemo(type, url) {
   if (type === 'Fichier Excel') {
     const a = document.createElement('a');
