@@ -661,6 +661,87 @@
   opacity: 1;
   margin-top: 20px;
 }
+.category-block {
+  margin-bottom: 80px;
+}
+
+.category-header {
+  margin-bottom: 28px;
+}
+
+.category-header h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 34px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  color: var(--white);
+}
+
+.category-line {
+  width: 100%;
+  max-width: 220px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green-vivid), transparent);
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+}
+.card-price {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--green-glow);
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+}
+
+.skeleton-card {
+  height: 260px;
+  border-radius: 20px;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.03) 25%,
+    rgba(255,255,255,0.08) 50%,
+    rgba(255,255,255,0.03) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: linear-gradient(145deg, #0f2e23, #091c15);
+  border: 1px solid rgba(25,195,125,0.25);
+  color: white;
+  padding: 14px 20px;
+  border-radius: 14px;
+  font-size: 14px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: all 0.35s ease;
+  z-index: 3000;
+  max-width: 320px;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
   </style>
 </head>
 <body>
@@ -724,7 +805,11 @@
     </select>
   </div>
 </div>
-  <div id="apps"></div>
+  <div id="apps-loader" class="skeleton-grid">
+  <div class="skeleton-card"></div>
+  <div class="skeleton-card"></div>
+</div>
+<div id="apps"></div>
 </section>
 
 <!-- CTA BAND -->
@@ -805,6 +890,10 @@
       <label>Email</label>
       <input id="email" type="email" placeholder="jean@email.com">
     </div>
+<div class="form-group">
+  <label>Téléphone</label>
+  <input id="phone" type="tel" placeholder="06 12 34 56 78" required>
+</div>
     <div class="form-group">
       <label>Message</label>
       <textarea id="message" placeholder="Décrivez votre besoin…"></textarea>
@@ -849,6 +938,7 @@ categories.forEach(cat => {
 // ✅ stock + render
 window.ALL_APPS = apps;
 renderApps(apps);
+document.getElementById('apps-loader').style.display = 'none';
 
 // ✅ filtre
 function getFiltered() {
@@ -880,38 +970,112 @@ function renderApps(apps){
   const container = document.getElementById('apps');
   container.innerHTML = '';
 
-  apps.forEach((app, i) => {
-    const div = document.createElement('div');
-    div.className = 'card reveal';
+  const grouped = {};
 
-div.innerHTML = `
-  <div class="card-img-wrap">
-    <img src="${app.image}" alt="${app.name}">
-  </div>
-  <div class="card-body">
-    <h3>${app.name}</h3>
-    <p class="desc">${app.description}</p>
+  // ✅ on groupe les apps par catégorie
+  apps.forEach(app => {
+    const type = app.type || "Autres";
+if (!grouped[type]) grouped[type] = [];
+grouped[type].push(app);
+  });
+
+  // ✅ on affiche chaque catégorie avec son bloc
+  Object.entries(grouped).forEach(([type, items]) => {
+    const section = document.createElement('div');
+    section.className = 'category-block reveal';
+
+    section.innerHTML = `
+      <div class="category-header">
+        <h3>${type}</h3>
+        <div class="category-line"></div>
+      </div>
+      <div class="category-grid"></div>
+    `;
+
+    const grid = section.querySelector('.category-grid');
+
+    items.forEach((app, index) => {
+      const div = document.createElement('div');
+      div.className = 'card reveal';
+      if (index >= 2) div.style.display = 'none';
+      div.innerHTML = `
+        <div class="card-img-wrap">
+          <img src="${app.image}" alt="${app.name}">
+        </div>
+        <div class="card-body">
+          <h3>${app.name}</h3>
+
+<div class="card-price">
+  ${
+    app["Prix ferme"]
+      ? `${app["Prix ferme"]} €`
+      : app["Prix à partir de"]
+      ? `À partir de ${app["Prix à partir de"]} €`
+      : app["abonnement ferme"]
+      ? `${app["abonnement ferme"]} € / mois`
+      : app["abonnement à partir de"]
+      ? `À partir de ${app["abonnement à partir de"]} € / mois`
+      : '📩 Demander un devis'
+  }
+</div>
+
+<p class="desc">${app.description}</p>
 <span class="read-more">Afficher plus ↓</span>
 
-    ${extractYouTubeId(app.video) ? `
-  <iframe 
-    src="https://www.youtube.com/embed/${extractYouTubeId(app.video)}"
-    allowfullscreen
-    loading="lazy"
-  ></iframe>
-` : ``}
+          ${extractYouTubeId(app.video) ? `
+            <iframe 
+              src="https://www.youtube.com/embed/${extractYouTubeId(app.video)}"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          ` : ``}
 
-    <div class="card-actions">
-      <button class="btn btn-outline" onclick="window.location.href='tel:${app.phone}'">📞 Appeler</button>
-     ${app.demo ? `<button class="btn btn-outline" onclick="handleDemo('${app.type}','${app.demo}')">${app.type === 'Fichier Excel' ? '📥 Télécharger démo' : '🚀 Démo'}</button>` : ''}
-      <button class="btn btn-primary" onclick="openForm('${app.name}')">Contacter</button>
-    </div>
+          <div class="card-actions">
+            <button class="btn btn-outline" onclick="window.location.href='tel:${app.phone}'">📞 Appeler</button>
+            ${app.demo ? `<button class="btn btn-outline" onclick="handleDemo('${app.type}','${app.demo}')">
+  ${
+    app.type === 'Fichier Excel'
+      ? '📥 Télécharger démo'
+      : app.type === 'Site vitrine'
+      ? '🌐 Voir le site'
+      : '🚀 Démo'
+  }
+</button>` : ''}
+            <button class="btn btn-primary" onclick="openForm('${app.name}')">Contacter</button>
+          </div>
+        </div>
+      `;
 
-  </div>
-`;
-    container.appendChild(div);
+      grid.appendChild(div);
+    });
+if (items.length > 2) {
+  const moreBtn = document.createElement('button');
+  moreBtn.className = 'btn btn-outline';
+  moreBtn.style.marginTop = '20px';
+  moreBtn.textContent = `Voir plus (${items.length - 2})`;
+
+  moreBtn.onclick = () => {
+    const hiddenCards = grid.querySelectorAll('.card');
+    const expanded = moreBtn.dataset.expanded === 'true';
+
+    hiddenCards.forEach((card, i) => {
+      if (i >= 2) {
+        card.style.display = expanded ? 'none' : '';
+      }
+    });
+
+    moreBtn.dataset.expanded = !expanded;
+    moreBtn.textContent = expanded
+      ? `Voir plus (${items.length - 2})`
+      : 'Voir moins ↑';
+  };
+
+  section.appendChild(moreBtn);
+}
+    container.appendChild(section);
   });
-observeReveal();
+
+  observeReveal();
 }
 function extractYouTubeId(url){
   if(!url) return null;
@@ -953,20 +1117,44 @@ function closeForm(){ document.getElementById('overlay').classList.remove('activ
 function handleOverlayClick(e){
   if (e.target === document.getElementById('overlay')) closeForm();
 }
+function showToast(message, isError = false) {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
 
+  toast.style.borderColor = isError
+    ? 'rgba(255,80,80,0.35)'
+    : 'rgba(25,195,125,0.25)';
+
+  toast.classList.add('show');
+
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 3500);
+}
 async function sendForm(){
   const appTitle = document.getElementById('overlay').querySelector('h3').textContent;
-const payload = {
-  name:    document.getElementById('name').value,
-  email:   document.getElementById('email').value,
-  message: document.getElementById('message').value,
-  app:     appTitle !== "Parlons de votre projet" ? appTitle : ""
-};
-  try {
-    await fetch(API_URL, { method:'POST', body: JSON.stringify(payload) });
-  } catch(e) {}
-  alert('✅ Message envoyé ! Je vous répondrai très vite.');
+
+  const payload = {
+    name:    document.getElementById('name').value,
+    email:   document.getElementById('email').value,
+    phone:   document.getElementById('phone').value,
+    message: document.getElementById('message').value,
+    app:     appTitle !== "Parlons de votre projet" ? appTitle : ""
+  };
+
+  // ✅ UX instantanée
+  showToast('✅ Votre demande a bien été envoyée.');
   closeForm();
+
+  // ✅ envoi arrière-plan
+  fetch(API_URL, {
+    method: 'POST',
+    body: JSON.stringify(payload)
+  }).catch(() => {
+    setTimeout(() => {
+      showToast("⚠️ Petit souci lors de l'envoi. Merci de réessayer.", true);
+    }, 500);
+  });
 }
 
 // Scroll reveal
@@ -1023,5 +1211,6 @@ document.querySelectorAll('.legal-toggle').forEach(btn => {
   });
 });
 </script>
+<div id="toast" class="toast"></div>
 </body>
 </html>
