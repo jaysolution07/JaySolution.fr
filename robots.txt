@@ -1,0 +1,6 @@
+# robots.txt — JaySolution
+# ⚠️ Remplacez l'URL du sitemap par votre domaine définitif
+User-agent: *
+Allow: /
+
+Sitemap: https://jaysolution07.github.io/sitemap.xml
