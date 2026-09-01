@@ -1,5 +1,5 @@
 # robots.txt — JaySolution
-
+# Domaine canonique : https://www.jaysolution.fr/
 User-agent: *
 Allow: /
 
