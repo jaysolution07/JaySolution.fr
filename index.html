@@ -1091,6 +1091,9 @@
   color: var(--green-vivid);
   text-decoration: underline;
 }
+  
+    /* ⚠️ Sécurité : la liste statique est dans le HTML — on ne montre jamais le skeleton seul */
+    #apps-loader { display: none; }
   </style>
 </head>
 <body>
@@ -1198,95 +1201,189 @@
   <div class="skeleton-card"></div>
 </div>
 <div id="apps">
-  <!-- ⚠️ CONTENU DE SECOURS : ces réalisations sont visibles immédiatement au chargement (indexables par Google).
-       Si l'API Google Apps Script répond, elles sont remplacées par la liste complète et à jour. -->
+    <!-- ⚠️ CONTENU DE SECOURS : la liste COMPLÈTE des réalisations est intégrée en dur ci-dessous.
+       Visible immédiatement au chargement, sans aucune dépendance (indexable par Google).
+       Si l'API Google Apps Script répond, elle rafraîchit cette liste (prix, nouveaux projets).
+       ➜ IMPORTANT : quand vous ajoutez une réalisation dans l'API, pensez à mettre à jour ce bloc statique
+         (ou demandez à régénérer la page). Les images sont des URL publiques GitHub (hotlink stable). -->
   <div class="category-block">
     <div class="category-header">
-      <h3>Application web</h3>
+      <h3>Application</h3>
       <div class="category-line"></div>
     </div>
     <div class="category-grid">
       <article class="card">
-        <div class="card-img-wrap">
-          <svg class="card-placeholder-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="32" cy="23" r="20" fill="none" stroke="#19c37d" stroke-width="1.2" opacity="0.25" stroke-dasharray="4 3"/>
-            <rect x="15" y="9" width="34" height="25" rx="4" fill="none" stroke="#19c37d" stroke-width="2.5"/>
-            <line x1="32" y1="34" x2="32" y2="41" stroke="#19c37d" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="24" y1="41" x2="40" y2="41" stroke="#19c37d" stroke-width="2.5" stroke-linecap="round"/>
-            <rect x="21" y="14" width="9" height="7" rx="1.5" fill="#19c37d" opacity="0.75"/>
-          </svg>
-        </div>
+        <div class="card-img-wrap"><img src="https://raw.githubusercontent.com/jaysolution07/EasyHygie/main/logoEH.png" alt="JaySolution — EasyHygie" loading="lazy" onerror="imgError(this)"></div>
         <div class="card-body">
-          <h3>TempClean</h3>
-          <div class="card-price">Sur devis</div>
-          <p class="desc">Application web de gestion pour sociétés de nettoyage : interventions, planning hebdomadaire et suivi client centralisés, accessibles depuis n'importe quel appareil.</p>
+          <h3>EasyHygie</h3>
+          <div class="card-price">À partir de 29.99 € / mois</div>
+          <p class="desc">EasyHygie simplifie votre gestion HACCP au quotidien. Pilotez vos contrôles, suivez vos températures, gérez vos nettoyages et assurez votre traçabilité en temps réel, depuis une seule application intuitive.</p>
           <span class="read-more">Afficher plus ↓</span>
           <div class="card-actions">
             <button class="btn btn-outline" onclick="window.location.href='tel:0677718914'">📞 Appeler</button>
-            <button class="btn btn-primary" onclick="openForm('TempClean')">Contacter</button>
+            <button class="btn btn-outline" onclick="handleDemo('Application','https://jaysolution07.github.io/EasyHygieDemo/')">🚀 Démo</button>
+            <button class="btn btn-primary" onclick="openForm('EasyHygie')">Contacter</button>
           </div>
         </div>
       </article>
       <article class="card">
-        <div class="card-img-wrap">
-          <svg class="card-placeholder-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="32" cy="23" r="20" fill="none" stroke="#19c37d" stroke-width="1.2" opacity="0.25" stroke-dasharray="4 3"/>
-            <rect x="15" y="9" width="34" height="25" rx="4" fill="none" stroke="#19c37d" stroke-width="2.5"/>
-            <line x1="32" y1="34" x2="32" y2="41" stroke="#19c37d" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="24" y1="41" x2="40" y2="41" stroke="#19c37d" stroke-width="2.5" stroke-linecap="round"/>
-            <rect x="21" y="14" width="9" height="7" rx="1.5" fill="#19c37d" opacity="0.75"/>
-          </svg>
-        </div>
+        <div class="card-img-wrap"><img src="https://raw.githubusercontent.com/jaysolution07/EasyNutri/main/icon.svg" alt="JaySolution — EasyNutri" loading="lazy" onerror="imgError(this)"></div>
         <div class="card-body">
-          <h3>InterMaster — CFA</h3>
-          <div class="card-price">Sur devis</div>
-          <p class="desc">Plateforme de gestion des interventions pour entreprises multi-sites : calendrier, rôles et droits, suivi par technicien et export CSV des interventions.</p>
+          <h3>EasyNutri</h3>
+          <div class="card-price">À partir de 29.99 € / mois</div>
+          <p class="desc">EazyNutri est une application intelligente de calcul nutritionnel conçue pour les professionnels de l’alimentaire.
+Créez vos recettes en quelques clics, ajoutez vos ingrédients (simples ou composés), ou importez directement vos données depuis la table officielle CIQUAL (ANSES) pour garantir des valeurs nutritionnelles fiables et reconnues.
+Obtenez instantanément les valeurs nutritionnelles détaillées, le poids total, les allergènes et la composition dans l’ordre pondéral.
+Générez automatiquement des fiches techniques professionnelles conformes aux exigences HACCP, prêtes à être imprimées ou exportées en PDF.
+Simple, rapide et précise, EazyNutri transforme la gestion nutritionnelle en un outil accessible et puissant.</p>
           <span class="read-more">Afficher plus ↓</span>
           <div class="card-actions">
             <button class="btn btn-outline" onclick="window.location.href='tel:0677718914'">📞 Appeler</button>
+            <button class="btn btn-outline" onclick="handleDemo('Application','https://jaysolution07.github.io/EasyNutriDemo/')">🚀 Démo</button>
+            <button class="btn btn-primary" onclick="openForm('EasyNutri')">Contacter</button>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-img-wrap"><img src="https://raw.githubusercontent.com/jaysolution07/TempClean/main/logo.png" alt="JaySolution — Exemple : App sur mesure de contrôle du plan de maîtrise sanitaire Tempclean" loading="lazy" onerror="imgError(this)"></div>
+        <div class="card-body">
+          <h3>Exemple : App sur mesure de contrôle du plan de maîtrise sanitaire Tempclean</h3>
+          <div class="card-price">📩 Demander un devis</div>
+          <p class="desc">Cette démonstration présente un exemple concret d’application web métier développée sur mesure pour une entreprise afin de digitaliser ses process internes et fluidifier son organisation au quotidien.
+Conçue pour s’adapter parfaitement aux besoins du terrain, cette solution permet de centraliser les suivis, sécuriser les données, automatiser les contrôles et offrir une expérience simple, rapide et professionnelle sur mobile, tablette et ordinateur.
+Chaque projet que je développe est pensé comme un véritable outil de productivité et de croissance, avec une interface moderne, une logique métier précise et des automatisations qui répondent exactement aux contraintes du client.
+Cette démo illustre le niveau de personnalisation que je peux apporter à votre entreprise à travers des applications métiers sur mesure, plateformes internes, outils de gestion ou solutions digitales spécifiques, avec un seul objectif : vous faire gagner du temps, améliorer vos performances et professionnaliser votre image.</p>
+          <span class="read-more">Afficher plus ↓</span>
+          <div class="card-actions">
+            <button class="btn btn-outline" onclick="window.location.href='tel:0677718914'">📞 Appeler</button>
+            <button class="btn btn-outline" onclick="handleDemo('Application','https://jaysolution07.github.io/Demo-TempClean/')">🚀 Démo</button>
+            <button class="btn btn-primary" onclick="openForm('Exemple : App sur mesure de contrôle du plan de maîtrise sanitaire Tempclean')">Contacter</button>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-img-wrap"><img src="https://raw.githubusercontent.com/jaysolution07/Demo-InterMaster/main/intermaster.png" alt="JaySolution — InterMaster" loading="lazy" onerror="imgError(this)"></div>
+        <div class="card-body">
+          <h3>InterMaster</h3>
+          <div class="card-price">📩 Demander un devis</div>
+          <p class="desc">InterMaster est une plateforme web de gestion des interventions. Elle permet de centraliser les demandes, attribuer et planifier les interventions, gérer les utilisateurs et leurs droits, suivre l’avancement des tâches, consulter les statistiques et conserver un historique des opérations. L’application intègre également la gestion de photos, la synchronisation des données et une interface responsive adaptée aux ordinateurs, tablettes et smartphones.</p>
+          <span class="read-more">Afficher plus ↓</span>
+          <div class="card-actions">
+            <button class="btn btn-outline" onclick="window.location.href='tel:0677718914'">📞 Appeler</button>
+            <button class="btn btn-outline" onclick="handleDemo('Application','https://jaysolution07.github.io/Demo-InterMaster/')">🚀 Démo</button>
             <button class="btn btn-primary" onclick="openForm('InterMaster')">Contacter</button>
           </div>
         </div>
       </article>
       <article class="card">
-        <div class="card-img-wrap">
-          <svg class="card-placeholder-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="32" cy="23" r="20" fill="none" stroke="#19c37d" stroke-width="1.2" opacity="0.25" stroke-dasharray="4 3"/>
-            <rect x="15" y="9" width="34" height="25" rx="4" fill="none" stroke="#19c37d" stroke-width="2.5"/>
-            <line x1="32" y1="34" x2="32" y2="41" stroke="#19c37d" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="24" y1="41" x2="40" y2="41" stroke="#19c37d" stroke-width="2.5" stroke-linecap="round"/>
-            <rect x="21" y="14" width="9" height="7" rx="1.5" fill="#19c37d" opacity="0.75"/>
-          </svg>
-        </div>
+        <div class="card-img-wrap"><img src="https://raw.githubusercontent.com/jaysolution07/LabOra-demo/main/lab.png" alt="JaySolution — CRM LabOra" loading="lazy" onerror="imgError(this)"></div>
         <div class="card-body">
-          <h3>Invoiceo</h3>
-          <div class="card-price">Sur devis</div>
-          <p class="desc">Outil de facturation complet : devis, factures, avoirs, bons de livraison et gestion de la base clients, avec génération de documents professionnels.</p>
+          <h3>CRM LabOra</h3>
+          <div class="card-price">📩 Demander un devis</div>
+          <p class="desc">Labora — Votre CRM pour piloter simplement votre activité commerciale. Centralisez vos clients, prospects, rendez-vous, devis et contrats dans une plateforme unique, intuitive et accessible partout.</p>
           <span class="read-more">Afficher plus ↓</span>
           <div class="card-actions">
             <button class="btn btn-outline" onclick="window.location.href='tel:0677718914'">📞 Appeler</button>
-            <button class="btn btn-primary" onclick="openForm('Invoiceo')">Contacter</button>
+            <button class="btn btn-outline" onclick="handleDemo('Application','https://jaysolution07.github.io/LabOra-demo/')">🚀 Démo</button>
+            <button class="btn btn-primary" onclick="openForm('CRM LabOra')">Contacter</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+  <div class="category-block">
+    <div class="category-header">
+      <h3>Fichier Excel</h3>
+      <div class="category-line"></div>
+    </div>
+    <div class="category-grid">
+      <article class="card">
+        <div class="card-img-wrap"><img src="https://raw.githubusercontent.com/jaysolution07/Module-Nutrition-Recette/main/vn.png" alt="JaySolution — Module Nutrition Recette" loading="lazy" onerror="imgError(this)"></div>
+        <div class="card-body">
+          <h3>Module Nutrition Recette</h3>
+          <div class="card-price">10 €</div>
+          <p class="desc">Ce module Excel permet de formuler facilement vos recettes et de calculer automatiquement leurs valeurs nutritionnelles.
+Ajoutez vos ingrédients, ajustez les quantités en quelques clics et obtenez instantanément les apports nutritionnels détaillés.
+L’outil génère également des fiches techniques complètes, prêtes à être utilisées en production ou pour vos obligations réglementaires.
+Simple, rapide et fiable, il vous fait gagner un temps précieux au quotidien.
+⚠️ Ce fichier contient des macros nécessaires à son fonctionnement. Elles sont sans risque et doivent être activées pour utiliser l’outil correctement.</p>
+          <span class="read-more">Afficher plus ↓</span>
+          <div class="card-actions">
+            <button class="btn btn-outline" onclick="window.location.href='tel:0677718914'">📞 Appeler</button>
+            <button class="btn btn-outline" onclick="handleDemo('Fichier Excel','https://raw.githubusercontent.com/jaysolution07/Module-Nutrition-Recette/main/Module%20Nutrition%20Recette%20demo.xlsm')">📥 Télécharger démo</button>
+            <button class="btn btn-primary" onclick="openForm('Module Nutrition Recette')">Contacter</button>
           </div>
         </div>
       </article>
       <article class="card">
-        <div class="card-img-wrap">
-          <svg class="card-placeholder-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="32" cy="23" r="20" fill="none" stroke="#19c37d" stroke-width="1.2" opacity="0.25" stroke-dasharray="4 3"/>
-            <rect x="15" y="9" width="34" height="25" rx="4" fill="none" stroke="#19c37d" stroke-width="2.5"/>
-            <line x1="32" y1="34" x2="32" y2="41" stroke="#19c37d" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="24" y1="41" x2="40" y2="41" stroke="#19c37d" stroke-width="2.5" stroke-linecap="round"/>
-            <rect x="21" y="14" width="9" height="7" rx="1.5" fill="#19c37d" opacity="0.75"/>
-          </svg>
-        </div>
+        <div class="card-img-wrap"><img src="https://raw.githubusercontent.com/jaysolution07/Module-HACCP/main/Capture%20d'%C3%A9cran%202025-10-27%20181527.png" alt="JaySolution — Module HACCP" loading="lazy" onerror="imgError(this)"></div>
         <div class="card-body">
-          <h3>EasyNutri</h3>
-          <div class="card-price">Sur devis</div>
-          <p class="desc">Application de gestion pour la restauration : recettes, suivi des ingrédients et des lots, calcul des coûts et visualisation de l'évolution des prix.</p>
+          <h3>Module HACCP</h3>
+          <div class="card-price">10 €</div>
+          <p class="desc">Ce module Excel permet de gérer facilement l’ensemble de vos obligations HACCP depuis une seule interface claire et intuitive. Suivi des analyses, gestion des non-conformités, contrôle des allergènes ou encore enregistrement de vos procédures d’hygiène : tout est centralisé pour vous faire gagner du temps et sécuriser votre activité.
+Saisissez rapidement vos données, consultez vos historiques en quelques clics et gardez une traçabilité complète de vos contrôles. Grâce aux rappels intégrés et aux outils de suivi, vous ne passez plus à côté d’une vérification importante.
+Pensée pour les professionnels de la restauration et de l’agroalimentaire, cette application vous aide à rester conforme aux exigences sanitaires tout en simplifiant votre organisation au quotidien.
+⚠️ Ce fichier contient des macros nécessaires à son fonctionnement. Elles sont sans risque et doivent être activées pour utiliser l’outil correctement.</p>
           <span class="read-more">Afficher plus ↓</span>
           <div class="card-actions">
             <button class="btn btn-outline" onclick="window.location.href='tel:0677718914'">📞 Appeler</button>
-            <button class="btn btn-primary" onclick="openForm('EasyNutri')">Contacter</button>
+            <button class="btn btn-outline" onclick="handleDemo('Fichier Excel','https://raw.githubusercontent.com/jaysolution07/Module-HACCP/main/Module%20HACCP%20demo.xlsm')">📥 Télécharger démo</button>
+            <button class="btn btn-primary" onclick="openForm('Module HACCP')">Contacter</button>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-img-wrap"><img src="https://raw.githubusercontent.com/jaysolution07/Tableau-de-Bord-des-Ventes-Excel/main/Capture%20d'%C3%A9cran%202025-10-27%20182958.png" alt="JaySolution — Tableau de Bord des Ventes Excel demo" loading="lazy" onerror="imgError(this)"></div>
+        <div class="card-body">
+          <h3>Tableau de Bord des Ventes Excel demo</h3>
+          <div class="card-price">5 €</div>
+          <p class="desc">Ce tableau de bord Excel permet de visualiser rapidement les performances commerciales de votre activité. Grâce à une interface claire et dynamique, vous accédez en un coup d’œil aux indicateurs clés : chiffre d’affaires global, répartition entre ventes professionnelles et boutique, ainsi que la région la plus performante.
+Suivez l’évolution de votre chiffre d’affaires dans le temps grâce à des graphiques intuitifs, identifiez vos meilleurs clients, vos produits les plus vendus et vos formats les plus performants. Un classement des commerciaux vous permet également d’analyser les performances individuelles.
+Les filtres intégrés (commerciaux, périodes, produits) offrent une analyse personnalisée et facilitent la prise de décision. Cet outil est idéal pour piloter votre activité, optimiser vos ventes et gagner en visibilité sur vos résultats.
+⚠️ Ce fichier contient des macros nécessaires à son fonctionnement. Elles sont sans risque et doivent être activées pour utiliser l’outil correctement.</p>
+          <span class="read-more">Afficher plus ↓</span>
+          <div class="card-actions">
+            <button class="btn btn-outline" onclick="window.location.href='tel:0677718914'">📞 Appeler</button>
+            <button class="btn btn-outline" onclick="handleDemo('Fichier Excel','https://raw.githubusercontent.com/jaysolution07/Tableau-de-Bord-des-Ventes-Excel/main/Tableau%20de%20Bord%20des%20Ventes%20Excel%20demo.xlsm')">📥 Télécharger démo</button>
+            <button class="btn btn-primary" onclick="openForm('Tableau de Bord des Ventes Excel demo')">Contacter</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+  <div class="category-block">
+    <div class="category-header">
+      <h3>Site web</h3>
+      <div class="category-line"></div>
+    </div>
+    <div class="category-grid">
+      <article class="card">
+        <div class="card-img-wrap"><img src="https://raw.githubusercontent.com/jaysolution07/JaySolution.fr/main/assets/douceg.png" alt="JaySolution — Exemple : Site web Pro couturière Douce Grâce" loading="lazy" onerror="imgError(this)"></div>
+        <div class="card-body">
+          <h3>Exemple : Site web Pro couturière Douce Grâce</h3>
+          <div class="card-price">📩 Demander un devis</div>
+          <p class="desc">Je conçois des sites web professionnels sur mesure, modernes, rapides et optimisés pour mettre en valeur votre activité.
+Que ce soit pour un artisan, une entreprise, un indépendant, une location saisonnière ou une marque, chaque site est pensé pour inspirer confiance, présenter vos services avec impact et convertir vos visiteurs en clients.</p>
+          <span class="read-more">Afficher plus ↓</span>
+          <div class="card-actions">
+            <button class="btn btn-outline" onclick="window.location.href='tel:0677718914'">📞 Appeler</button>
+            <button class="btn btn-outline" onclick="handleDemo('Site web','https://jaysolution07.github.io/DouceGrace.fr/')">🌐 Voir le site</button>
+            <button class="btn btn-primary" onclick="openForm('Exemple : Site web Pro couturière Douce Grâce')">Contacter</button>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-img-wrap"><img src="https://jaysolution07.github.io/JaySolution.fr/assets/jaysol.png" alt="JaySolution — Exemple : Mon site web Pro" loading="lazy" onerror="imgError(this)"></div>
+        <div class="card-body">
+          <h3>Exemple : Mon site web Pro</h3>
+          <div class="card-price">📩 Demander un devis</div>
+          <p class="desc">Je conçois des sites web professionnels sur mesure, modernes, rapides et optimisés pour mettre en valeur votre activité.
+Que ce soit pour un artisan, une entreprise, un indépendant, une location saisonnière ou une marque, chaque site est pensé pour inspirer confiance, présenter vos services avec impact et convertir vos visiteurs en clients.</p>
+          <span class="read-more">Afficher plus ↓</span>
+          <div class="card-actions">
+            <button class="btn btn-outline" onclick="window.location.href='tel:0677718914'">📞 Appeler</button>
+            <button class="btn btn-outline" onclick="handleDemo('Site web','https://jaysolution07.github.io/JaySolution.fr/')">🌐 Voir le site</button>
+            <button class="btn btn-primary" onclick="openForm('Exemple : Mon site web Pro')">Contacter</button>
           </div>
         </div>
       </article>
@@ -1429,10 +1526,147 @@ const API_URL = "https://script.google.com/macros/s/AKfycbykc8cEXF-RteRuRf6DzN-W
    Affiché immédiatement au chargement (voir le HTML #apps) ;
    remplacé par les données de l'API si celle-ci répond. */
 const FALLBACK_APPS = [
-  { name: "TempClean",         category: "Gestion d'entreprise", type: "Application web", phone: "0677718914", description: "Application web de gestion pour sociétés de nettoyage : interventions, planning hebdomadaire et suivi client centralisés, accessibles depuis n'importe quel appareil." },
-  { name: "InterMaster — CFA", category: "Gestion d'entreprise", type: "Application web", phone: "0677718914", description: "Plateforme de gestion des interventions pour entreprises multi-sites : calendrier, rôles et droits, suivi par technicien et export CSV des interventions." },
-  { name: "Invoiceo",          category: "Facturation",          type: "Application web", phone: "0677718914", description: "Outil de facturation complet : devis, factures, avoirs, bons de livraison et gestion de la base clients, avec génération de documents professionnels." },
-  { name: "EasyNutri",         category: "Restauration",         type: "Application web", phone: "0677718914", description: "Application de gestion pour la restauration : recettes, suivi des ingrédients et des lots, calcul des coûts et visualisation de l'évolution des prix." }
+
+  {
+    "name": "EasyHygie",
+    "description": "EasyHygie simplifie votre gestion HACCP au quotidien. Pilotez vos contrôles, suivez vos températures, gérez vos nettoyages et assurez votre traçabilité en temps réel, depuis une seule application intuitive.",
+    "image": "https://raw.githubusercontent.com/jaysolution07/EasyHygie/main/logoEH.png",
+    "video": "",
+    "phone": "0677718914",
+    "category": "HACCP",
+    "demo": "https://jaysolution07.github.io/EasyHygieDemo/",
+    "type": "Application",
+    "Prix ferme": "",
+    "Prix à partir de": "",
+    "abonnement ferme": "",
+    "abonnement à partir de": 29.99
+  },
+  {
+    "name": "EasyNutri",
+    "description": "EazyNutri est une application intelligente de calcul nutritionnel conçue pour les professionnels de l’alimentaire.\nCréez vos recettes en quelques clics, ajoutez vos ingrédients (simples ou composés), ou importez directement vos données depuis la table officielle CIQUAL (ANSES) pour garantir des valeurs nutritionnelles fiables et reconnues.\nObtenez instantanément les valeurs nutritionnelles détaillées, le poids total, les allergènes et la composition dans l’ordre pondéral.\nGénérez automatiquement des fiches techniques professionnelles conformes aux exigences HACCP, prêtes à être imprimées ou exportées en PDF.\nSimple, rapide et précise, EazyNutri transforme la gestion nutritionnelle en un outil accessible et puissant.",
+    "image": "https://raw.githubusercontent.com/jaysolution07/EasyNutri/main/icon.svg",
+    "video": "",
+    "phone": "0677718914",
+    "category": "Production",
+    "demo": "https://jaysolution07.github.io/EasyNutriDemo/",
+    "type": "Application",
+    "Prix ferme": "",
+    "Prix à partir de": "",
+    "abonnement ferme": "",
+    "abonnement à partir de": 29.99
+  },
+  {
+    "name": "Module Nutrition Recette",
+    "description": "Ce module Excel permet de formuler facilement vos recettes et de calculer automatiquement leurs valeurs nutritionnelles.\nAjoutez vos ingrédients, ajustez les quantités en quelques clics et obtenez instantanément les apports nutritionnels détaillés.\nL’outil génère également des fiches techniques complètes, prêtes à être utilisées en production ou pour vos obligations réglementaires.\nSimple, rapide et fiable, il vous fait gagner un temps précieux au quotidien.\n⚠️ Ce fichier contient des macros nécessaires à son fonctionnement. Elles sont sans risque et doivent être activées pour utiliser l’outil correctement.",
+    "image": "https://raw.githubusercontent.com/jaysolution07/Module-Nutrition-Recette/main/vn.png",
+    "video": "",
+    "phone": "0677718914",
+    "category": "Production",
+    "demo": "https://raw.githubusercontent.com/jaysolution07/Module-Nutrition-Recette/main/Module%20Nutrition%20Recette%20demo.xlsm",
+    "type": "Fichier Excel",
+    "Prix ferme": 10,
+    "Prix à partir de": "",
+    "abonnement ferme": "",
+    "abonnement à partir de": ""
+  },
+  {
+    "name": "Module HACCP",
+    "description": "Ce module Excel permet de gérer facilement l’ensemble de vos obligations HACCP depuis une seule interface claire et intuitive. Suivi des analyses, gestion des non-conformités, contrôle des allergènes ou encore enregistrement de vos procédures d’hygiène : tout est centralisé pour vous faire gagner du temps et sécuriser votre activité.\nSaisissez rapidement vos données, consultez vos historiques en quelques clics et gardez une traçabilité complète de vos contrôles. Grâce aux rappels intégrés et aux outils de suivi, vous ne passez plus à côté d’une vérification importante.\nPensée pour les professionnels de la restauration et de l’agroalimentaire, cette application vous aide à rester conforme aux exigences sanitaires tout en simplifiant votre organisation au quotidien.\n⚠️ Ce fichier contient des macros nécessaires à son fonctionnement. Elles sont sans risque et doivent être activées pour utiliser l’outil correctement.",
+    "image": "https://raw.githubusercontent.com/jaysolution07/Module-HACCP/main/Capture%20d'%C3%A9cran%202025-10-27%20181527.png",
+    "video": "",
+    "phone": "0677718914",
+    "category": "HACCP",
+    "demo": "https://raw.githubusercontent.com/jaysolution07/Module-HACCP/main/Module%20HACCP%20demo.xlsm",
+    "type": "Fichier Excel",
+    "Prix ferme": 10,
+    "Prix à partir de": "",
+    "abonnement ferme": "",
+    "abonnement à partir de": ""
+  },
+  {
+    "name": "Tableau de Bord des Ventes Excel demo",
+    "description": "Ce tableau de bord Excel permet de visualiser rapidement les performances commerciales de votre activité. Grâce à une interface claire et dynamique, vous accédez en un coup d’œil aux indicateurs clés : chiffre d’affaires global, répartition entre ventes professionnelles et boutique, ainsi que la région la plus performante.\nSuivez l’évolution de votre chiffre d’affaires dans le temps grâce à des graphiques intuitifs, identifiez vos meilleurs clients, vos produits les plus vendus et vos formats les plus performants. Un classement des commerciaux vous permet également d’analyser les performances individuelles.\nLes filtres intégrés (commerciaux, périodes, produits) offrent une analyse personnalisée et facilitent la prise de décision. Cet outil est idéal pour piloter votre activité, optimiser vos ventes et gagner en visibilité sur vos résultats.\n⚠️ Ce fichier contient des macros nécessaires à son fonctionnement. Elles sont sans risque et doivent être activées pour utiliser l’outil correctement.",
+    "image": "https://raw.githubusercontent.com/jaysolution07/Tableau-de-Bord-des-Ventes-Excel/main/Capture%20d'%C3%A9cran%202025-10-27%20182958.png",
+    "video": "",
+    "phone": "0677718914",
+    "category": "Vente",
+    "demo": "https://raw.githubusercontent.com/jaysolution07/Tableau-de-Bord-des-Ventes-Excel/main/Tableau%20de%20Bord%20des%20Ventes%20Excel%20demo.xlsm",
+    "type": "Fichier Excel",
+    "Prix ferme": 5,
+    "Prix à partir de": "",
+    "abonnement ferme": "",
+    "abonnement à partir de": ""
+  },
+  {
+    "name": "Exemple : Site web Pro couturière Douce Grâce",
+    "description": "Je conçois des sites web professionnels sur mesure, modernes, rapides et optimisés pour mettre en valeur votre activité.\nQue ce soit pour un artisan, une entreprise, un indépendant, une location saisonnière ou une marque, chaque site est pensé pour inspirer confiance, présenter vos services avec impact et convertir vos visiteurs en clients.",
+    "image": "https://raw.githubusercontent.com/jaysolution07/JaySolution.fr/main/assets/douceg.png",
+    "video": "",
+    "phone": "0677718914",
+    "category": "Vente",
+    "demo": "https://jaysolution07.github.io/DouceGrace.fr/",
+    "type": "Site web",
+    "Prix ferme": "",
+    "Prix à partir de": "",
+    "abonnement ferme": "",
+    "abonnement à partir de": ""
+  },
+  {
+    "name": "Exemple : Mon site web Pro",
+    "description": "Je conçois des sites web professionnels sur mesure, modernes, rapides et optimisés pour mettre en valeur votre activité.\nQue ce soit pour un artisan, une entreprise, un indépendant, une location saisonnière ou une marque, chaque site est pensé pour inspirer confiance, présenter vos services avec impact et convertir vos visiteurs en clients.",
+    "image": "https://jaysolution07.github.io/JaySolution.fr/assets/jaysol.png",
+    "video": "",
+    "phone": "0677718914",
+    "category": "Vente",
+    "demo": "https://jaysolution07.github.io/JaySolution.fr/",
+    "type": "Site web",
+    "Prix ferme": "",
+    "Prix à partir de": "",
+    "abonnement ferme": "",
+    "abonnement à partir de": ""
+  },
+  {
+    "name": "Exemple : App sur mesure de contrôle du plan de maîtrise sanitaire Tempclean",
+    "description": "Cette démonstration présente un exemple concret d’application web métier développée sur mesure pour une entreprise afin de digitaliser ses process internes et fluidifier son organisation au quotidien.\nConçue pour s’adapter parfaitement aux besoins du terrain, cette solution permet de centraliser les suivis, sécuriser les données, automatiser les contrôles et offrir une expérience simple, rapide et professionnelle sur mobile, tablette et ordinateur.\nChaque projet que je développe est pensé comme un véritable outil de productivité et de croissance, avec une interface moderne, une logique métier précise et des automatisations qui répondent exactement aux contraintes du client.\nCette démo illustre le niveau de personnalisation que je peux apporter à votre entreprise à travers des applications métiers sur mesure, plateformes internes, outils de gestion ou solutions digitales spécifiques, avec un seul objectif : vous faire gagner du temps, améliorer vos performances et professionnaliser votre image.",
+    "image": "https://raw.githubusercontent.com/jaysolution07/TempClean/main/logo.png",
+    "video": "",
+    "phone": "0677718914",
+    "category": "HACCP",
+    "demo": "https://jaysolution07.github.io/Demo-TempClean/",
+    "type": "Application",
+    "Prix ferme": "",
+    "Prix à partir de": "",
+    "abonnement ferme": "",
+    "abonnement à partir de": ""
+  },
+  {
+    "name": "InterMaster",
+    "description": "InterMaster est une plateforme web de gestion des interventions. Elle permet de centraliser les demandes, attribuer et planifier les interventions, gérer les utilisateurs et leurs droits, suivre l’avancement des tâches, consulter les statistiques et conserver un historique des opérations. L’application intègre également la gestion de photos, la synchronisation des données et une interface responsive adaptée aux ordinateurs, tablettes et smartphones.",
+    "image": "https://raw.githubusercontent.com/jaysolution07/Demo-InterMaster/main/intermaster.png",
+    "video": "",
+    "phone": "0677718914",
+    "category": "Pilotage",
+    "demo": "https://jaysolution07.github.io/Demo-InterMaster/",
+    "type": "Application",
+    "Prix ferme": "",
+    "Prix à partir de": "",
+    "abonnement ferme": "",
+    "abonnement à partir de": ""
+  },
+  {
+    "name": "CRM LabOra",
+    "description": "Labora — Votre CRM pour piloter simplement votre activité commerciale. Centralisez vos clients, prospects, rendez-vous, devis et contrats dans une plateforme unique, intuitive et accessible partout.",
+    "image": "https://raw.githubusercontent.com/jaysolution07/LabOra-demo/main/lab.png",
+    "video": "",
+    "phone": "0677718914",
+    "category": "Pilotage",
+    "demo": "https://jaysolution07.github.io/LabOra-demo/",
+    "type": "Application",
+    "Prix ferme": "",
+    "Prix à partir de": "",
+    "abonnement ferme": "",
+    "abonnement à partir de": ""
+  }
 ];
 const SITE_PHONE = "0677718914";
 const PLACEHOLDER_SVG = `<svg class="card-placeholder-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -1449,6 +1683,13 @@ window.ALL_APPS = FALLBACK_APPS;
 function hideLoader(){
   const loader = document.getElementById('apps-loader');
   if (loader) loader.style.display = 'none';
+}
+
+function imgError(img){
+  const wrap = img.parentElement;
+  if (!wrap || wrap.dataset.fallback) return;
+  wrap.dataset.fallback = '1';
+  wrap.innerHTML = PLACEHOLDER_SVG;
 }
 
 function populateFilters(apps, explicitCategories){
@@ -1488,32 +1729,55 @@ function wireFilters(){
   document.getElementById('type-filter').onchange     = () => renderApps(getFiltered());
 }
 
-async function loadApps(){
+const APPS_CACHE_KEY = 'jay_apps_cache_v1';
+
+function applyApiApps(data){
+  const list = data.apps || data;
+  if (!Array.isArray(list) || list.length === 0) return false;
+
+  window.ALL_APPS = list;
+  populateFilters(list, data.categories);
+  wireFilters();
+  renderApps(list);
+  hideLoader();
+
+  // ✅ on mémorise la liste : prochaines visites ultra-rapides, même si l'API est lente
+  try { localStorage.setItem(APPS_CACHE_KEY, JSON.stringify({ ts: Date.now(), data })); } catch(e) {}
+  return true;
+}
+
+async function loadApps(triedOnce){
   if (API_URL.includes("URL_APPS_SCRIPT")) { hideLoader(); return; }
 
+  // 1️⃣ la liste intégrée en dur est déjà affichée ; si une version en cache existe, on l'affiche immédiatement
   try {
-    const res = await fetch(API_URL);
+    const cached = JSON.parse(localStorage.getItem(APPS_CACHE_KEY) || 'null');
+    if (cached && cached.data && applyApiApps(cached.data)) { /* l'API rafraîchit ensuite en arrière-plan */ }
+  } catch(e) {}
+
+  // 2️⃣ appel API avec timeout (l'API peut démarrer à froid plusieurs secondes)
+  try {
+    let res;
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 12000);
+    try { res = await fetch(API_URL, { signal: ctrl.signal }); }
+    finally { clearTimeout(timer); }
+
+    if (!res.ok) throw new Error('HTTP ' + res.status);
     const contentType = res.headers.get('content-type') || '';
-    if (!contentType.includes('application/json')) { hideLoader(); return; }
+    if (!contentType.includes('application/json')) throw new Error('Réponse non JSON : ' + contentType);
 
     const data = await res.json();
-    // ✅ le backend renvoie { apps: [...], categories: [...] }
-    const apps = data.apps || data;
-    if (!Array.isArray(apps) || apps.length === 0) { hideLoader(); return; }
-
-    // ✅ on remplace le contenu de secours par les données à jour de l'API
-    window.ALL_APPS = apps;
-    populateFilters(apps, data.categories);
-    wireFilters();
-    renderApps(apps);
-    hideLoader();
-    observeReveal();
-
+    applyApiApps(data);
   } catch(e) {
-    // ✅ en cas d'échec : on garde le fallback statique affiché au lieu d'un skeleton bloqué
-    console.warn('Apps non chargées — contenu de secours affiché :', e);
-    hideLoader();
+    // ✅ en cas d'échec : la liste intégrée en dur reste affichée (jamais de section vide)
+    console.warn('Apps non rafraîchies — liste intégrée affichée :', e);
+    if (!triedOnce) {
+      // l'API Google Apps Script répond souvent après quelques secondes : on retente une fois
+      setTimeout(() => loadApps(true), 6000);
+    }
   }
+  hideLoader();
 }
 function renderApps(apps){
   const container = document.getElementById('apps');
@@ -1549,7 +1813,7 @@ grouped[type].push(app);
       if (index >= 2) div.style.display = 'none';
       div.innerHTML = `
         ${app.image
-          ? `<div class="card-img-wrap"><img src="${app.image}" alt="JaySolution — ${app.name}" loading="lazy"></div>`
+          ? `<div class="card-img-wrap"><img src="${app.image}" alt="JaySolution — ${app.name}" loading="lazy" onerror="imgError(this)"></div>`
           : `<div class="card-img-wrap">${PLACEHOLDER_SVG}</div>`}
         <div class="card-body">
           <h3>${app.name}</h3>
