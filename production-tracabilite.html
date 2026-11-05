@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logiciel de production et de traçabilité agroalimentaire</title>
+  <meta name="description" content="Logiciel de production et traçabilité : ordres de fabrication, rendements et pertes, coûts de revient, traçabilité des lots, étiquetage et allergènes.">
+  <meta name="author" content="Samuel Jay — JaySolution">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="geo.region" content="FR-07">
+  <meta name="geo.placename" content="Saint-Martin-sur-Lavezon">
+  <link rel="canonical" href="https://www.jaysolution.fr/production-tracabilite.html">
+  <link rel="alternate" hreflang="fr" href="https://www.jaysolution.fr/production-tracabilite.html">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="JaySolution">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Logiciel de production et traçabilité — JaySolution">
+  <meta property="og:description" content="Ordres de fabrication, rendements, coûts de revient, traçabilité amont/aval, étiquetage et allergènes : un logiciel qui relie atelier, stock et obligations sanitaires.">
+  <meta property="og:url" content="https://www.jaysolution.fr/production-tracabilite.html">
+  <meta property="og:image" content="https://www.jaysolution.fr/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:alt" content="JaySolution — logiciels sur mesure pour l'agroalimentaire">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Logiciel de production et traçabilité — JaySolution">
+  <meta name="twitter:description" content="Ordres de fabrication, rendements, coûts de revient, traçabilité amont/aval, étiquetage et allergènes : un logiciel qui relie atelier, stock et obligations sanitaires.">
+  <meta name="twitter:image" content="https://www.jaysolution.fr/og-image.jpg">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23071f18'/%3E%3Ccircle cx='32' cy='27' r='22' fill='none' stroke='%2319c37d' stroke-width='1.2' opacity='0.25' stroke-dasharray='4 3'/%3E%3Ccircle cx='32' cy='27' r='18' fill='none' stroke='%2319c37d' stroke-width='0.8' opacity='0.12'/%3E%3Crect x='15' y='9' width='34' height='25' rx='4' fill='none' stroke='%2319c37d' stroke-width='2.5'/%3E%3Crect x='18.5' y='12.5' width='27' height='18' rx='2' fill='rgba(25,195,125,0.06)'/%3E%3Crect x='21' y='15' width='9' height='7' rx='1.5' fill='%2319c37d' opacity='0.75'/%3E%3Cline x1='33' y1='17' x2='43' y2='17' stroke='%2319c37d' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='33' y1='22' x2='41' y2='22' stroke='%2319c37d' stroke-width='2' stroke-linecap='round' opacity='0.6'/%3E%3Cline x1='20' y1='27' x2='43' y2='27' stroke='%2319c37d' stroke-width='1' stroke-linecap='round' opacity='0.2'/%3E%3Cline x1='32' y1='34' x2='32' y2='41' stroke='%2319c37d' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='24' y1='41' x2='40' y2='41' stroke='%2319c37d' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23071f18'/%3E%3Ccircle cx='32' cy='27' r='22' fill='none' stroke='%2319c37d' stroke-width='1.2' opacity='0.25' stroke-dasharray='4 3'/%3E%3Ccircle cx='32' cy='27' r='18' fill='none' stroke='%2319c37d' stroke-width='0.8' opacity='0.12'/%3E%3Crect x='15' y='9' width='34' height='25' rx='4' fill='none' stroke='%2319c37d' stroke-width='2.5'/%3E%3Crect x='18.5' y='12.5' width='27' height='18' rx='2' fill='rgba(25,195,125,0.06)'/%3E%3Crect x='21' y='15' width='9' height='7' rx='1.5' fill='%2319c37d' opacity='0.75'/%3E%3Cline x1='33' y1='17' x2='43' y2='17' stroke='%2319c37d' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='33' y1='22' x2='41' y2='22' stroke='%2319c37d' stroke-width='2' stroke-linecap='round' opacity='0.6'/%3E%3Cline x1='20' y1='27' x2='43' y2='27' stroke='%2319c37d' stroke-width='1' stroke-linecap='round' opacity='0.2'/%3E%3Cline x1='32' y1='34' x2='32' y2='41' stroke='%2319c37d' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='24' y1='41' x2='40' y2='41' stroke='%2319c37d' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="manifest" href="data:application/json,%7B%22name%22%3A%22JaySolution%22%2C%22short_name%22%3A%22JaySolution%22%2C%22start_url%22%3A%22./%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23071f18%22%2C%22theme_color%22%3A%22%2319c37d%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data:image/svg+xml,%253Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%253E%253Crect width='64' height='64' rx='14' fill='%2523071f18'/%253E%253Ccircle cx='32' cy='27' r='22' fill='none' stroke='%252319c37d' stroke-width='1.2' opacity='0.25' stroke-dasharray='4 3'/%253E%253Ccircle cx='32' cy='27' r='18' fill='none' stroke='%252319c37d' stroke-width='0.8' opacity='0.12'/%253E%253Crect x='15' y='9' width='34' height='25' rx='4' fill='none' stroke='%252319c37d' stroke-width='2.5'/%253E%253Crect x='18.5' y='12.5' width='27' height='18' rx='2' fill='rgba(25,195,125,0.06)'/%253E%253Crect x='21' y='15' width='9' height='7' rx='1.5' fill='%252319c37d' opacity='0.75'/%253E%253Cline x1='33' y1='17' x2='43' y2='17' stroke='%252319c37d' stroke-width='2' stroke-linecap='round'/%253E%253Cline x1='33' y1='22' x2='41' y2='22' stroke='%252319c37d' stroke-width='2' stroke-linecap='round' opacity='0.6'/%253E%253Cline x1='20' y1='27' x2='43' y2='27' stroke='%252319c37d' stroke-width='1' stroke-linecap='round' opacity='0.2'/%253E%253Cline x1='32' y1='34' x2='32' y2='41' stroke='%252319c37d' stroke-width='2.5' stroke-linecap='round'/%253E%253Cline x1='24' y1='41' x2='40' y2='41' stroke='%252319c37d' stroke-width='2.5' stroke-linecap='round'/%253E%253C/svg%253E%22%2C%22sizes%22%3A%2264x64%22%2C%22type%22%3A%22image/svg+xml%22%7D%5D%7D">
+  <meta name="theme-color" content="#19c37d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="JaySolution">
+  <link rel="dns-prefetch" href="https://script.google.com">
+  <link rel="preconnect" href="https://script.google.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.jaysolution.fr/production-tracabilite.html#prod",
+      "name": "Logiciel de production, traçabilité et étiquetage sur mesure",
+      "serviceType": "Développement de logiciel de production et de traçabilité agroalimentaire",
+      "description": "Logiciel sur mesure pour piloter la production : ordres de fabrication, rendements et pertes, coûts de revient, traçabilité des lots, étiquetage et allergènes.",
+      "url": "https://www.jaysolution.fr/production-tracabilite.html",
+      "provider": {
+        "@type": "ProfessionalService",
+        "@id": "https://www.jaysolution.fr/#org",
+        "name": "JaySolution",
+        "url": "https://www.jaysolution.fr/"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "France"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Peut-on suivre la production sans imposer une saisie lourde aux équipes ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "C'est la contrainte principale, et elle guide tout le reste. On ne saisit que ce qui sert : l'ordre de fabrication, les matières consommées, la quantité produite, les pertes. Le reste se déduit. Si un écran ajoute une corvée sans rien apporter, il est simplifié ou supprimé."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "La traçabilité remonte jusqu'où ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Jusqu'où vous en avez besoin : du fournisseur et du lot de matière jusqu'au client et au lot livré, en passant par l'ordre de fabrication et l'opérateur. Une recherche de lot donne l'amont et l'aval en quelques secondes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Gère-t-il les recettes, les allergènes et les étiquettes ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui. Les recettes contiennent les ingrédients et leurs quantités ; le logiciel en déduit la composition dans l'ordre pondéral, les allergènes et, si vous le souhaitez, les valeurs nutritionnelles. Les fiches techniques et les étiquettes sont générées à partir de ces données."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Faut-il changer de matériel ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non, dans la grande majorité des cas. Le logiciel fonctionne dans un navigateur : l'ordinateur du bureau, une tablette en atelier, un smartphone pour un contrôle. Une imprimante d'étiquettes existante peut généralement être réutilisée."
+          }
+        }
+      ],
+      "@id": "https://www.jaysolution.fr/production-tracabilite.html#faq"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+<header class="site-nav">
+  <a href="index.html" class="nav-brand">JaySolution</a>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav-links" id="nav-links" aria-label="Navigation principale">
+    <a href="index.html">Accueil</a>
+    <a href="haccp.html">HACCP</a>
+    <a href="stock.html">Stock</a>
+    <a href="production-tracabilite.html" class="active">Production</a>
+    <a href="index.html#realisations">Réalisations</a>
+    <a href="#" class="nav-contact" onclick="openForm();return false;">Contact</a>
+  </nav>
+</header>
+<main>
+<section id="production-tracabilite" class="service-section">
+  <div class="service-head reveal">
+    <p class="section-label">Production, traçabilité &amp; étiquetage</p>
+    <h1 class="page-title">Logiciel de production et de traçabilité : <em>du lot reçu au lot livré</em></h1>
+    <p class="page-lead">Ordres de fabrication, planning d'atelier, rendements et pertes, coûts de revient, traçabilité des lots, étiquetage et allergènes : un <strong>logiciel de production agroalimentaire</strong> qui relie enfin l'atelier, le stock et les obligations sanitaires.</p>
+    <div class="page-meta">
+      <span>Ordres de fabrication</span>
+      <span>Rendements &amp; pertes</span>
+      <span>Traçabilité amont / aval</span>
+      <span>Étiquetage &amp; allergènes</span>
+    </div>
+  </div>
+  <div class="page-grid">
+    <article class="prose reveal">
+      <h3 id="production">Planifier et suivre la production</h3>
+      <p>Un atelier agroalimentaire vit avec trois questions tous les matins : qu'est-ce qu'on produit aujourd'hui, avec quelles matières, et combien on en sort réellement. Quand ces réponses vivent dans la tête du chef d'atelier et sur un tableau blanc, l'entreprise dépend d'une personne.</p>
+      <div class="feature-list">
+        <div class="feature-item">
+          <h3>Ordres de fabrication</h3>
+          <p>Chaque lot à produire est un ordre de fabrication : recette, quantité visée, matières nécessaires, date, opérateur. L'avancement se met à jour depuis l'atelier, pas depuis le bureau.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Planning d'atelier</h3>
+          <p>Une vue jour / semaine par poste ou par ligne, avec les commandes à honorer et les matières disponibles. Les conflits se voient avant de bloquer la production.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Rendements et pertes matières</h3>
+          <p>Quantité théorique, quantité réelle, écart et pourcentage de perte. Sur plusieurs semaines, vous voyez ce qui dérive : un ingrédient, une étape, une équipe, une machine.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Coûts de revient</h3>
+          <p>Matières, emballages, main-d'œuvre si vous le souhaitez : le coût de revient se calcule à partir des prix réels du stock, pas d'une estimation annuelle.</p>
+        </div>
+      </div>
+
+      <h3 id="tracabilite">Traçabilité : remonter et descendre un lot en quelques secondes</h3>
+      <p>La traçabilité n'est pas un document à remplir pour un contrôle : c'est la capacité à répondre vite le jour où un client appelle, ou quand un fournisseur signale un problème sur un lot.</p>
+      <p>Avec un <strong>logiciel de traçabilité</strong> relié au stock et à la production, vous obtenez :</p>
+      <ul>
+        <li>la <strong>remontée</strong> : quel lot de matière, quel fournisseur, quel bon de livraison, quelle date ;</li>
+        <li>la <strong>descente</strong> : quels ordres de fabrication, quels produits finis, quels clients livrés ;</li>
+        <li>les <strong>quantités</strong> concernées, pour un rappel ciblé plutôt qu'un retrait massif ;</li>
+        <li>un <strong>historique horodaté</strong> et exportable, présentable en contrôle.</li>
+      </ul>
+      <p>C'est aussi un outil de qualité au quotidien : quand une non-conformité apparaît, on identifie immédiatement les lots concernés et on évite de reproduire l'erreur.</p>
+
+      <h3 id="etiquetage">Étiquetage, allergènes et fiches techniques</h3>
+      <p>Les recettes sont saisies une fois, avec leurs ingrédients et leurs quantités. À partir de là, le logiciel peut produire&nbsp;:</p>
+      <ul>
+        <li>la <strong>composition dans l'ordre pondéral</strong>, mise à jour à chaque évolution de recette ;</li>
+        <li>les <strong>allergènes</strong> en évidence, avec les mentions réglementaires ;</li>
+        <li>les <strong>valeurs nutritionnelles</strong> lorsque vous les calculez ;</li>
+        <li>les <strong>fiches techniques</strong> et les <strong>étiquettes</strong> prêtes à imprimer, avec DLC, lot et poids net.</li>
+      </ul>
+      <p>L'intérêt n'est pas seulement le gain de temps : c'est la cohérence. Une étiquette ne peut plus afficher une composition qui ne correspond plus à la recette réellement produite.</p>
+
+      <h3 id="pilotage">Pilotage : les chiffres qui comptent</h3>
+      <p>Un tableau de bord n'a de valeur que s'il aide à décider. Celui-ci se limite à ce qui se traduit en action : production du jour, écarts de rendement, ruptures à venir, lots proches de leur DLC, conformité des enregistrements.</p>
+      <ul>
+        <li>production réalisée / prévue, par produit et par période ;</li>
+        <li>rendements et pertes, avec les écarts qui sortent de la normale ;</li>
+        <li>marges par produit, à partir des coûts de revient réels ;</li>
+        <li>alertes stock et DLC, pour agir avant le problème.</li>
+      </ul>
+
+      <h3>Pour qui ce logiciel est pensé</h3>
+      <ul>
+        <li><strong>ateliers de transformation</strong> avec recettes, lots et nombreuses références ;</li>
+        <li><strong>PME agroalimentaires</strong> qui produisent pour la distribution ou pour d'autres entreprises ;</li>
+        <li><strong>métiers de bouche</strong> qui fabriquent et vendent leurs propres produits ;</li>
+        <li><strong>unités multi-sites</strong> qui ont besoin d'une vue consolidée.</li>
+      </ul>
+
+      <h3>Comment on travaille ensemble</h3>
+      <div class="steps">
+        <div class="step">
+          <h3>Immersion en atelier</h3>
+          <p>Je regarde une journée réelle : réception, lancement, pesée, conditionnement, expédition. Les frictions apparaissent vite, et ce sont elles qu'on traite en premier.</p>
+        </div>
+        <div class="step">
+          <h3>Un périmètre progressif</h3>
+          <p>On commence par la production et la traçabilité, puis on ajoute l'étiquetage et les tableaux de bord. Chaque étape doit apporter un bénéfice visible pour les équipes.</p>
+        </div>
+        <div class="step">
+          <h3>Mise en service accompagnée</h3>
+          <p>Formation courte, double fonctionnement temporaire si nécessaire, ajustements les premières semaines. Vous gardez un interlocuteur unique.</p>
+        </div>
+      </div>
+    </article>
+    <aside class="aside">
+      <div class="aside-card">
+        <h3>Un process à relier ?</h3>
+        <p>Production, stock et traçabilité séparés ? Décrivez-moi votre chaîne, je vous dis où commencer.</p>
+        <button class="btn btn-primary" onclick="openForm()">Décrire mon besoin →</button>
+      </div>
+      <div class="aside-card">
+        <h3>Sur le même thème</h3>
+        <div class="aside-links">
+          <a href="haccp.html">Logiciel HACCP et plan de maîtrise sanitaire</a>
+          <a href="stock.html">Logiciel de gestion de stock (lots, DLC/DDM)</a>
+          <a href="index.html#realisations">Voir les logiciels déjà en service</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="cta-inner reveal">
+    <h2>Un process à digitaliser ?</h2>
+    <p>Stocks, plan de maîtrise sanitaire, production, traçabilité : dites-moi en une phrase où vous perdez du temps. Je vous réponds sous 24h avec une première piste concrète.</p>
+    <button class="btn btn-primary" onclick="openForm()">Parler de mon besoin →</button>
+  </div>
+</section>
+
+<section id="faq" class="faq-section">
+  <div class="legal-section reveal">
+    <p class="section-label">Questions fréquentes — production & traçabilité</p>
+    <h2 class="section-title">Vos questions <em>sur production et traçabilité</em></h2>
+    <div class="faq-list">
+<details open>
+        <summary>Peut-on suivre la production sans imposer une saisie lourde aux équipes ?</summary>
+        <p>C'est la contrainte principale, et elle guide tout le reste. On ne saisit que ce qui sert : l'ordre de fabrication, les matières consommées, la quantité produite, les pertes. Le reste se déduit. Si un écran ajoute une corvée sans rien apporter, il est simplifié ou supprimé.</p>
+      </details>
+<details>
+        <summary>La traçabilité remonte jusqu'où ?</summary>
+        <p>Jusqu'où vous en avez besoin : du <strong>fournisseur et du lot de matière</strong> jusqu'au <strong>client et au lot livré</strong>, en passant par l'ordre de fabrication et l'opérateur. Une recherche de lot donne l'amont et l'aval en quelques secondes.</p>
+      </details>
+<details>
+        <summary>Gère-t-il les recettes, les allergènes et les étiquettes ?</summary>
+        <p>Oui. Les recettes contiennent les ingrédients et leurs quantités ; le logiciel en déduit la composition dans l'ordre pondéral, les allergènes et, si vous le souhaitez, les valeurs nutritionnelles. Les fiches techniques et les étiquettes sont générées à partir de ces données.</p>
+      </details>
+<details>
+        <summary>Faut-il changer de matériel ?</summary>
+        <p>Non, dans la grande majorité des cas. Le logiciel fonctionne dans un navigateur : l'ordinateur du bureau, une tablette en atelier, un smartphone pour un contrôle. Une imprimante d'étiquettes existante peut généralement être réutilisée.</p>
+      </details>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  © 2026 JaySolution · Logiciels sur mesure pour l'agroalimentaire · Tous droits réservés
+  <div class="footer-links">
+    <a href="haccp.html">Logiciel HACCP</a>
+    <a href="stock.html">Gestion de stock</a>
+    <a href="production-tracabilite.html">Production &amp; traçabilité</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="confidentialite.html">Confidentialité</a>
+  </div>
+</footer>
+<!-- MODAL -->
+<div class="overlay" id="overlay" onclick="handleOverlayClick(event)">
+  <div class="modal">
+    <button class="close-btn" onclick="closeForm()">✕</button>
+    <h3>Parlons de votre process</h3>
+    <p class="modal-sub">Réponse sous 24h</p>
+
+    <div class="form-group">
+      <label>Nom</label>
+      <input id="name" placeholder="Jean Dupont">
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input id="email" type="email" placeholder="jean@email.com">
+    </div>
+<div class="form-group">
+  <label>Téléphone</label>
+  <input id="phone" type="tel" placeholder="06 12 34 56 78" required>
+</div>
+    <div class="form-group">
+      <label>Message</label>
+      <textarea id="message" placeholder="Décrivez votre process : stock, HACCP, production, traçabilité…"></textarea>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="sendForm()">Envoyer →</button>
+      <button class="btn btn-outline" onclick="closeForm()">Annuler</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logiciel HACCP sur mesure : plan de maîtrise sanitaire</title>
+  <meta name="description" content="Logiciel HACCP sur mesure : relevés de températures, plan de nettoyage, non-conformités, allergènes. Votre PMS à jour, prêt pour le contrôle.">
+  <meta name="author" content="Samuel Jay — JaySolution">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="geo.region" content="FR-07">
+  <meta name="geo.placename" content="Saint-Martin-sur-Lavezon">
+  <link rel="canonical" href="https://www.jaysolution.fr/haccp.html">
+  <link rel="alternate" hreflang="fr" href="https://www.jaysolution.fr/haccp.html">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="JaySolution">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Logiciel HACCP sur mesure — JaySolution">
+  <meta property="og:description" content="Relevés de températures, nettoyage et désinfection, non-conformités, allergènes : un logiciel HACCP sur mesure qui sort votre dossier sanitaire en quelques clics.">
+  <meta property="og:url" content="https://www.jaysolution.fr/haccp.html">
+  <meta property="og:image" content="https://www.jaysolution.fr/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:alt" content="JaySolution — logiciels sur mesure pour l'agroalimentaire">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Logiciel HACCP sur mesure — JaySolution">
+  <meta name="twitter:description" content="Relevés de températures, nettoyage et désinfection, non-conformités, allergènes : un logiciel HACCP sur mesure qui sort votre dossier sanitaire en quelques clics.">
+  <meta name="twitter:image" content="https://www.jaysolution.fr/og-image.jpg">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23071f18'/%3E%3Ccircle cx='32' cy='27' r='22' fill='none' stroke='%2319c37d' stroke-width='1.2' opacity='0.25' stroke-dasharray='4 3'/%3E%3Ccircle cx='32' cy='27' r='18' fill='none' stroke='%2319c37d' stroke-width='0.8' opacity='0.12'/%3E%3Crect x='15' y='9' width='34' height='25' rx='4' fill='none' stroke='%2319c37d' stroke-width='2.5'/%3E%3Crect x='18.5' y='12.5' width='27' height='18' rx='2' fill='rgba(25,195,125,0.06)'/%3E%3Crect x='21' y='15' width='9' height='7' rx='1.5' fill='%2319c37d' opacity='0.75'/%3E%3Cline x1='33' y1='17' x2='43' y2='17' stroke='%2319c37d' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='33' y1='22' x2='41' y2='22' stroke='%2319c37d' stroke-width='2' stroke-linecap='round' opacity='0.6'/%3E%3Cline x1='20' y1='27' x2='43' y2='27' stroke='%2319c37d' stroke-width='1' stroke-linecap='round' opacity='0.2'/%3E%3Cline x1='32' y1='34' x2='32' y2='41' stroke='%2319c37d' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='24' y1='41' x2='40' y2='41' stroke='%2319c37d' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23071f18'/%3E%3Ccircle cx='32' cy='27' r='22' fill='none' stroke='%2319c37d' stroke-width='1.2' opacity='0.25' stroke-dasharray='4 3'/%3E%3Ccircle cx='32' cy='27' r='18' fill='none' stroke='%2319c37d' stroke-width='0.8' opacity='0.12'/%3E%3Crect x='15' y='9' width='34' height='25' rx='4' fill='none' stroke='%2319c37d' stroke-width='2.5'/%3E%3Crect x='18.5' y='12.5' width='27' height='18' rx='2' fill='rgba(25,195,125,0.06)'/%3E%3Crect x='21' y='15' width='9' height='7' rx='1.5' fill='%2319c37d' opacity='0.75'/%3E%3Cline x1='33' y1='17' x2='43' y2='17' stroke='%2319c37d' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='33' y1='22' x2='41' y2='22' stroke='%2319c37d' stroke-width='2' stroke-linecap='round' opacity='0.6'/%3E%3Cline x1='20' y1='27' x2='43' y2='27' stroke='%2319c37d' stroke-width='1' stroke-linecap='round' opacity='0.2'/%3E%3Cline x1='32' y1='34' x2='32' y2='41' stroke='%2319c37d' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='24' y1='41' x2='40' y2='41' stroke='%2319c37d' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="manifest" href="data:application/json,%7B%22name%22%3A%22JaySolution%22%2C%22short_name%22%3A%22JaySolution%22%2C%22start_url%22%3A%22./%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23071f18%22%2C%22theme_color%22%3A%22%2319c37d%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data:image/svg+xml,%253Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%253E%253Crect width='64' height='64' rx='14' fill='%2523071f18'/%253E%253Ccircle cx='32' cy='27' r='22' fill='none' stroke='%252319c37d' stroke-width='1.2' opacity='0.25' stroke-dasharray='4 3'/%253E%253Ccircle cx='32' cy='27' r='18' fill='none' stroke='%252319c37d' stroke-width='0.8' opacity='0.12'/%253E%253Crect x='15' y='9' width='34' height='25' rx='4' fill='none' stroke='%252319c37d' stroke-width='2.5'/%253E%253Crect x='18.5' y='12.5' width='27' height='18' rx='2' fill='rgba(25,195,125,0.06)'/%253E%253Crect x='21' y='15' width='9' height='7' rx='1.5' fill='%252319c37d' opacity='0.75'/%253E%253Cline x1='33' y1='17' x2='43' y2='17' stroke='%252319c37d' stroke-width='2' stroke-linecap='round'/%253E%253Cline x1='33' y1='22' x2='41' y2='22' stroke='%252319c37d' stroke-width='2' stroke-linecap='round' opacity='0.6'/%253E%253Cline x1='20' y1='27' x2='43' y2='27' stroke='%252319c37d' stroke-width='1' stroke-linecap='round' opacity='0.2'/%253E%253Cline x1='32' y1='34' x2='32' y2='41' stroke='%252319c37d' stroke-width='2.5' stroke-linecap='round'/%253E%253Cline x1='24' y1='41' x2='40' y2='41' stroke='%252319c37d' stroke-width='2.5' stroke-linecap='round'/%253E%253C/svg%253E%22%2C%22sizes%22%3A%2264x64%22%2C%22type%22%3A%22image/svg+xml%22%7D%5D%7D">
+  <meta name="theme-color" content="#19c37d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="JaySolution">
+  <link rel="dns-prefetch" href="https://script.google.com">
+  <link rel="preconnect" href="https://script.google.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.jaysolution.fr/haccp.html#haccp",
+      "name": "Logiciel HACCP et plan de maîtrise sanitaire sur mesure",
+      "serviceType": "Développement de logiciel HACCP / PMS pour l'agroalimentaire",
+      "description": "Logiciel sur mesure pour tenir le plan de maîtrise sanitaire : relevés de températures, plan de nettoyage et désinfection, non-conformités, allergènes, traçabilité des lots et export du dossier de contrôle.",
+      "url": "https://www.jaysolution.fr/haccp.html",
+      "provider": {
+        "@type": "ProfessionalService",
+        "@id": "https://www.jaysolution.fr/#org",
+        "name": "JaySolution",
+        "url": "https://www.jaysolution.fr/"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "France"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Faut-il tout ressaisir depuis mes classeurs et mes fichiers Excel ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non. On part de l'existant : vos feuilles de relevés, votre plan de nettoyage, vos fiches de non-conformité. Je les reprends tels quels dans le logiciel, avec vos fréquences, vos zones et vos formulations. La saisie de départ est préparée avec vous pendant la mise en place."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Un logiciel HACCP suffit-il pour être conforme lors d'un contrôle ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non, et c'est important de le dire : la conformité vient de ce que vous enregistrez et de la façon dont vous appliquez votre PMS. Le logiciel ne fait pas le travail à votre place, il le rend traçable, horodaté et présentable. C'est exactement ce que l'inspecteur regarde : la preuve que le contrôle a été fait, par qui, et ce que vous avez décidé quand ça ne l'était pas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Est-ce utilisable sur tablette directement en atelier ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui, c'est même le point de départ. Les écrans sont pensés pour une saisie rapide avec les doigts, parfois avec des gants : gros boutons, peu de champs, pas de menu caché. Le gérant consulte les mêmes données depuis son bureau."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Combien de temps pour la mise en place ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cela dépend du périmètre : un PMS simple pour un atelier de transformation n'a rien à voir avec un site multi-zones. Le délai est précisé dans le devis, après l'immersion sur le terrain. Réponse à votre demande sous 24h."
+          }
+        }
+      ],
+      "@id": "https://www.jaysolution.fr/haccp.html#faq"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+<header class="site-nav">
+  <a href="index.html" class="nav-brand">JaySolution</a>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav-links" id="nav-links" aria-label="Navigation principale">
+    <a href="index.html">Accueil</a>
+    <a href="haccp.html" class="active">HACCP</a>
+    <a href="stock.html">Stock</a>
+    <a href="production-tracabilite.html">Production</a>
+    <a href="index.html#realisations">Réalisations</a>
+    <a href="#" class="nav-contact" onclick="openForm();return false;">Contact</a>
+  </nav>
+</header>
+<main>
+<section id="haccp" class="service-section">
+  <div class="service-head reveal">
+    <p class="section-label">Plan de maîtrise sanitaire (HACCP)</p>
+    <h1 class="page-title">Logiciel HACCP : votre plan de maîtrise sanitaire <em>enfin tenu à jour</em></h1>
+    <p class="page-lead">Relevés de températures, plan de nettoyage et désinfection, non-conformités, allergènes, traçabilité des lots : un <strong>logiciel HACCP sur mesure</strong> qui remplace les classeurs et les fichiers Excel, et qui sort votre dossier sanitaire en quelques clics le jour du contrôle.</p>
+    <div class="page-meta">
+      <span>PMS &amp; HACCP</span>
+      <span>TPE / PME agroalimentaires</span>
+      <span>Saisie tablette en atelier</span>
+      <span>Sur mesure, pas un abonnement générique</span>
+    </div>
+  </div>
+  <div class="page-grid">
+    <article class="prose reveal">
+      <h3>Le plan de maîtrise sanitaire ne se joue pas au bureau</h3>
+      <p>Dans une entreprise agroalimentaire, la conformité se joue à 6h du matin, devant une chambre froide, une table de découpe ou une cuve. C'est là que le relevé doit être fait, noté, signé — et retrouvé trois mois plus tard sans fouiller dans un classeur.</p>
+      <p>Dans la pratique, voilà ce que je vois presque toujours avant de commencer :</p>
+      <ul>
+        <li>des <strong>relevés de températures sur papier</strong>, repris le soir de mémoire, parfois d'une seule main ;</li>
+        <li>des <strong>photos de thermomètre dans le téléphone</strong> d'un seul salarié, jamais sauvegardées ;</li>
+        <li>un <strong>tableur partagé</strong> avec quatre versions qui se contredisent ;</li>
+        <li>des <strong>non-conformités</strong> réglées sur le terrain, mais jamais écrites ;</li>
+        <li>et la veille du contrôle, une à deux journées entières à reconstituer l'historique.</li>
+      </ul>
+      <p>Ce n'est pas un problème de rigueur : c'est un problème d'outil. Un PMS tenu sur papier demande un effort que personne ne peut tenir douze mois de suite dans un atelier.</p>
+
+      <h3>Ce que fait le logiciel HACCP</h3>
+      <div class="feature-list">
+        <div class="feature-item">
+          <h3>Relevés de températures</h3>
+          <p>Enceintes froides, produits à réception, cuisson, refroidissement, expédition : chaque relevé est horodaté, rattaché à une enceinte et à un opérateur. Une valeur hors plage déclenche une alerte et une action à documenter.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Plan de nettoyage et désinfection</h3>
+          <p>Vos zones, vos fréquences, vos produits. Les tâches du jour s'affichent à l'équipe, chaque case cochée laisse une trace nominative et un horodatage — la preuve est faite, pas déclarée.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Non-conformités et actions correctives</h3>
+          <p>Déclaration en trois champs depuis l'atelier, cause, action corrective, responsable, date de clôture. L'historique montre que le problème a été traité, pas seulement constaté.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Allergènes et composition</h3>
+          <p>Fiches produits, allergènes et composition tenues à jour au même endroit. Quand une recette change, l'information suit jusqu'à l'étiquette et aux fiches techniques.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Traçabilité des lots</h3>
+          <p>Du fournisseur jusqu'au client : remontée et descente de lot en quelques secondes, avec les quantités et les dates. Indispensable en cas de rappel produit, et très utile au quotidien.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Dossier de contrôle</h3>
+          <p>Export par période, par zone ou par type d'enregistrement. Le jour du contrôle, vous imprimez ou présentez à l'écran un dossier lisible plutôt qu'un empilement de feuilles.</p>
+        </div>
+      </div>
+
+      <h3>Le jour du contrôle, tout est déjà là</h3>
+      <p>Le scénario est simple : l'inspecteur demande les relevés de température de la chambre froide négative sur les trois derniers mois. Vous ouvrez l'enceinte, vous choisissez la période, vous exportez. Trente secondes. Il demande ensuite la preuve du nettoyage de la trancheuse : même chose, avec le nom de l'opérateur et l'heure.</p>
+      <p>C'est cette différence-là qui change une journée de contrôle : non pas « on le fait », mais <strong>« voilà la preuve, datée, nominative, exportable »</strong>.</p>
+
+      <h3>Pour qui ce logiciel est pensé</h3>
+      <ul>
+        <li><strong>TPE et PME agroalimentaires</strong> qui grandissent et ne peuvent plus tenir leur PMS sur papier ;</li>
+        <li><strong>métiers de bouche</strong> : boucherie, charcuterie, fromagerie, conserverie, traiteur, pâtisserie ;</li>
+        <li><strong>laboratoires et ateliers de transformation</strong> avec plusieurs gammes et de nombreux lots ;</li>
+        <li><strong>cuisines centrales et unités de production</strong> qui livrent plusieurs points de vente.</li>
+      </ul>
+
+      <h3>Comment on travaille ensemble</h3>
+      <div class="steps">
+        <div class="step">
+          <h3>Immersion sur le terrain</h3>
+          <p>Je viens voir comment votre atelier fonctionne vraiment : qui relève quoi, à quel moment, avec quel matériel. C'est là que se décide la forme du logiciel.</p>
+        </div>
+        <div class="step">
+          <h3>Construction écran par écran</h3>
+          <p>On valide ensemble chaque écran avec vos mots et vos contraintes. Rien n'est imposé : si une étape vous fait perdre du temps, elle est revue.</p>
+        </div>
+        <div class="step">
+          <h3>Mise en service et accompagnement</h3>
+          <p>Formation courte des équipes, ajustements les premières semaines, puis un interlocuteur unique pour les évolutions. Pas de hotline anonyme.</p>
+        </div>
+      </div>
+
+      <h3>Sur mesure ou logiciel HACCP du marché ?</h3>
+      <p>Il existe des logiciels HACCP standard, et parfois ils suffisent. Si votre activité est très standardisée, je vous le dirai franchement plutôt que de vous vendre du développement.</p>
+      <p>Le sur mesure se justifie dès que votre PMS a une particularité : plusieurs sites, des zones et des fréquences qui ne rentrent pas dans les cases, un lien fort avec la production ou les recettes, des relevés qui doivent alimenter la traçabilité. Là, un outil générique vous oblige à tordre votre organisation. Un <strong>logiciel HACCP sur mesure</strong> fait l'inverse : il épouse votre process, et vos équipes l'adoptent parce qu'il leur ressemble.</p>
+    </article>
+    <aside class="aside">
+      <div class="aside-card">
+        <h3>Un contrôle approche ?</h3>
+        <p>Décrivez-moi votre PMS en quelques lignes : je vous dis ce qui peut être numérisé en premier, sans tout refaire.</p>
+        <button class="btn btn-primary" onclick="openForm()">Décrire mon besoin →</button>
+      </div>
+      <div class="aside-card">
+        <h3>Sur le même thème</h3>
+        <div class="aside-links">
+          <a href="stock.html">Logiciel de gestion de stock (lots, DLC/DDM)</a>
+          <a href="production-tracabilite.html">Production, traçabilité et étiquetage</a>
+          <a href="index.html#realisations">Voir EasyHygie et les logiciels déjà en service</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="cta-inner reveal">
+    <h2>Un process à digitaliser ?</h2>
+    <p>Stocks, plan de maîtrise sanitaire, production, traçabilité : dites-moi en une phrase où vous perdez du temps. Je vous réponds sous 24h avec une première piste concrète.</p>
+    <button class="btn btn-primary" onclick="openForm()">Parler de mon besoin →</button>
+  </div>
+</section>
+
+<section id="faq" class="faq-section">
+  <div class="legal-section reveal">
+    <p class="section-label">Questions fréquentes — HACCP</p>
+    <h2 class="section-title">Vos questions <em>sur le logiciel HACCP</em></h2>
+    <div class="faq-list">
+<details open>
+        <summary>Faut-il tout ressaisir depuis mes classeurs et mes fichiers Excel ?</summary>
+        <p>Non. On part de l'existant : vos feuilles de relevés, votre plan de nettoyage, vos fiches de non-conformité. Je les reprends tels quels dans le logiciel, avec vos fréquences, vos zones et vos formulations. La saisie de départ est préparée avec vous pendant la mise en place.</p>
+      </details>
+<details>
+        <summary>Un logiciel HACCP suffit-il pour être conforme lors d'un contrôle ?</summary>
+        <p>Non, et c'est important de le dire : la conformité vient de ce que vous enregistrez et de la façon dont vous appliquez votre PMS. Le logiciel ne fait pas le travail à votre place, il le rend <strong>traçable, horodaté et présentable</strong>. C'est exactement ce que l'inspecteur regarde : la preuve que le contrôle a été fait, par qui, et ce que vous avez décidé quand ça ne l'était pas.</p>
+      </details>
+<details>
+        <summary>Est-ce utilisable sur tablette directement en atelier ?</summary>
+        <p>Oui, c'est même le point de départ. Les écrans sont pensés pour une <strong>saisie rapide avec les doigts</strong>, parfois avec des gants : gros boutons, peu de champs, pas de menu caché. Le gérant consulte les mêmes données depuis son bureau.</p>
+      </details>
+<details>
+        <summary>Combien de temps pour la mise en place ?</summary>
+        <p>Cela dépend du périmètre : un PMS simple pour un atelier de transformation n'a rien à voir avec un site multi-zones. Le délai est <strong>précisé dans le devis</strong>, après l'immersion sur le terrain. Réponse à votre demande sous 24h.</p>
+      </details>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  © 2026 JaySolution · Logiciels sur mesure pour l'agroalimentaire · Tous droits réservés
+  <div class="footer-links">
+    <a href="haccp.html">Logiciel HACCP</a>
+    <a href="stock.html">Gestion de stock</a>
+    <a href="production-tracabilite.html">Production &amp; traçabilité</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="confidentialite.html">Confidentialité</a>
+  </div>
+</footer>
+<!-- MODAL -->
+<div class="overlay" id="overlay" onclick="handleOverlayClick(event)">
+  <div class="modal">
+    <button class="close-btn" onclick="closeForm()">✕</button>
+    <h3>Parlons de votre process</h3>
+    <p class="modal-sub">Réponse sous 24h</p>
+
+    <div class="form-group">
+      <label>Nom</label>
+      <input id="name" placeholder="Jean Dupont">
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input id="email" type="email" placeholder="jean@email.com">
+    </div>
+<div class="form-group">
+  <label>Téléphone</label>
+  <input id="phone" type="tel" placeholder="06 12 34 56 78" required>
+</div>
+    <div class="form-group">
+      <label>Message</label>
+      <textarea id="message" placeholder="Décrivez votre process : stock, HACCP, production, traçabilité…"></textarea>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="sendForm()">Envoyer →</button>
+      <button class="btn btn-outline" onclick="closeForm()">Annuler</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+<script src="assets/app.js"></script>
+</body>
+</html>

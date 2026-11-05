@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logiciel de gestion de stock agroalimentaire sur mesure</title>
+  <meta name="description" content="Logiciel de gestion de stock agroalimentaire : entrées et sorties par lot, DLC/DDM, seuils d'alerte, inventaires et valorisation. Sur mesure.">
+  <meta name="author" content="Samuel Jay — JaySolution">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="geo.region" content="FR-07">
+  <meta name="geo.placename" content="Saint-Martin-sur-Lavezon">
+  <link rel="canonical" href="https://www.jaysolution.fr/stock.html">
+  <link rel="alternate" hreflang="fr" href="https://www.jaysolution.fr/stock.html">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="JaySolution">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Logiciel de gestion de stock agroalimentaire — JaySolution">
+  <meta property="og:description" content="Lots, DLC/DDM, seuils d'alerte, inventaires, valorisation : un logiciel de gestion de stock conçu pour les contraintes réelles d'une entreprise agroalimentaire.">
+  <meta property="og:url" content="https://www.jaysolution.fr/stock.html">
+  <meta property="og:image" content="https://www.jaysolution.fr/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:alt" content="JaySolution — logiciels sur mesure pour l'agroalimentaire">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Logiciel de gestion de stock agroalimentaire — JaySolution">
+  <meta name="twitter:description" content="Lots, DLC/DDM, seuils d'alerte, inventaires, valorisation : un logiciel de gestion de stock conçu pour les contraintes réelles d'une entreprise agroalimentaire.">
+  <meta name="twitter:image" content="https://www.jaysolution.fr/og-image.jpg">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23071f18'/%3E%3Ccircle cx='32' cy='27' r='22' fill='none' stroke='%2319c37d' stroke-width='1.2' opacity='0.25' stroke-dasharray='4 3'/%3E%3Ccircle cx='32' cy='27' r='18' fill='none' stroke='%2319c37d' stroke-width='0.8' opacity='0.12'/%3E%3Crect x='15' y='9' width='34' height='25' rx='4' fill='none' stroke='%2319c37d' stroke-width='2.5'/%3E%3Crect x='18.5' y='12.5' width='27' height='18' rx='2' fill='rgba(25,195,125,0.06)'/%3E%3Crect x='21' y='15' width='9' height='7' rx='1.5' fill='%2319c37d' opacity='0.75'/%3E%3Cline x1='33' y1='17' x2='43' y2='17' stroke='%2319c37d' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='33' y1='22' x2='41' y2='22' stroke='%2319c37d' stroke-width='2' stroke-linecap='round' opacity='0.6'/%3E%3Cline x1='20' y1='27' x2='43' y2='27' stroke='%2319c37d' stroke-width='1' stroke-linecap='round' opacity='0.2'/%3E%3Cline x1='32' y1='34' x2='32' y2='41' stroke='%2319c37d' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='24' y1='41' x2='40' y2='41' stroke='%2319c37d' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23071f18'/%3E%3Ccircle cx='32' cy='27' r='22' fill='none' stroke='%2319c37d' stroke-width='1.2' opacity='0.25' stroke-dasharray='4 3'/%3E%3Ccircle cx='32' cy='27' r='18' fill='none' stroke='%2319c37d' stroke-width='0.8' opacity='0.12'/%3E%3Crect x='15' y='9' width='34' height='25' rx='4' fill='none' stroke='%2319c37d' stroke-width='2.5'/%3E%3Crect x='18.5' y='12.5' width='27' height='18' rx='2' fill='rgba(25,195,125,0.06)'/%3E%3Crect x='21' y='15' width='9' height='7' rx='1.5' fill='%2319c37d' opacity='0.75'/%3E%3Cline x1='33' y1='17' x2='43' y2='17' stroke='%2319c37d' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='33' y1='22' x2='41' y2='22' stroke='%2319c37d' stroke-width='2' stroke-linecap='round' opacity='0.6'/%3E%3Cline x1='20' y1='27' x2='43' y2='27' stroke='%2319c37d' stroke-width='1' stroke-linecap='round' opacity='0.2'/%3E%3Cline x1='32' y1='34' x2='32' y2='41' stroke='%2319c37d' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='24' y1='41' x2='40' y2='41' stroke='%2319c37d' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="manifest" href="data:application/json,%7B%22name%22%3A%22JaySolution%22%2C%22short_name%22%3A%22JaySolution%22%2C%22start_url%22%3A%22./%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23071f18%22%2C%22theme_color%22%3A%22%2319c37d%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data:image/svg+xml,%253Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%253E%253Crect width='64' height='64' rx='14' fill='%2523071f18'/%253E%253Ccircle cx='32' cy='27' r='22' fill='none' stroke='%252319c37d' stroke-width='1.2' opacity='0.25' stroke-dasharray='4 3'/%253E%253Ccircle cx='32' cy='27' r='18' fill='none' stroke='%252319c37d' stroke-width='0.8' opacity='0.12'/%253E%253Crect x='15' y='9' width='34' height='25' rx='4' fill='none' stroke='%252319c37d' stroke-width='2.5'/%253E%253Crect x='18.5' y='12.5' width='27' height='18' rx='2' fill='rgba(25,195,125,0.06)'/%253E%253Crect x='21' y='15' width='9' height='7' rx='1.5' fill='%252319c37d' opacity='0.75'/%253E%253Cline x1='33' y1='17' x2='43' y2='17' stroke='%252319c37d' stroke-width='2' stroke-linecap='round'/%253E%253Cline x1='33' y1='22' x2='41' y2='22' stroke='%252319c37d' stroke-width='2' stroke-linecap='round' opacity='0.6'/%253E%253Cline x1='20' y1='27' x2='43' y2='27' stroke='%252319c37d' stroke-width='1' stroke-linecap='round' opacity='0.2'/%253E%253Cline x1='32' y1='34' x2='32' y2='41' stroke='%252319c37d' stroke-width='2.5' stroke-linecap='round'/%253E%253Cline x1='24' y1='41' x2='40' y2='41' stroke='%252319c37d' stroke-width='2.5' stroke-linecap='round'/%253E%253C/svg%253E%22%2C%22sizes%22%3A%2264x64%22%2C%22type%22%3A%22image/svg+xml%22%7D%5D%7D">
+  <meta name="theme-color" content="#19c37d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="JaySolution">
+  <link rel="dns-prefetch" href="https://script.google.com">
+  <link rel="preconnect" href="https://script.google.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.jaysolution.fr/stock.html#stock",
+      "name": "Logiciel de gestion de stock agroalimentaire sur mesure",
+      "serviceType": "Développement de logiciel de gestion de stock et matières premières",
+      "description": "Logiciel sur mesure de gestion de stock pour l'agroalimentaire : réception et sortie par lot, suivi des DLC et DDM, seuils d'alerte, inventaires, valorisation et historique fournisseurs.",
+      "url": "https://www.jaysolution.fr/stock.html",
+      "provider": {
+        "@type": "ProfessionalService",
+        "@id": "https://www.jaysolution.fr/#org",
+        "name": "JaySolution",
+        "url": "https://www.jaysolution.fr/"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "France"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Je gère déjà mon stock sur Excel, pourquoi changer ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Excel fonctionne très bien à une personne et sur un seul poste. Il devient fragile dès que plusieurs personnes saisissent, que les lots et les DLC entrent en jeu, ou que vous devez prouver l'historique. Le logiciel reprend votre logique — mêmes colonnes, mêmes calculs — en ajoutant les alertes, les droits et la traçabilité."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment sont gérées les DLC et les DDM ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Chaque réception porte sa date, son lot et sa quantité. Le logiciel calcule les échéances, alerte avant que ça devienne critique, et permet de sortir en priorité ce qui expire le plus tôt. Une DLC dépassée reste visible dans l'historique : elle n'est jamais effacée."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Est-ce que ça remplace un logiciel de caisse ou de comptabilité ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non. Il gère les matières, les lots et les mouvements ; la caisse et la comptabilité restent chez leurs outils. Des exports sont prévus pour que les chiffres circulent sans double saisie."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Et si mes fournisseurs changent leurs conditionnements ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "C'est prévu : chaque article peut avoir plusieurs conditionnements et unités, avec des conversions. Vous saisissez en colis, en kilos ou en litres selon ce que vous avez en main, et le stock se tient dans l'unité de référence."
+          }
+        }
+      ],
+      "@id": "https://www.jaysolution.fr/stock.html#faq"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+<header class="site-nav">
+  <a href="index.html" class="nav-brand">JaySolution</a>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav-links" id="nav-links" aria-label="Navigation principale">
+    <a href="index.html">Accueil</a>
+    <a href="haccp.html">HACCP</a>
+    <a href="stock.html" class="active">Stock</a>
+    <a href="production-tracabilite.html">Production</a>
+    <a href="index.html#realisations">Réalisations</a>
+    <a href="#" class="nav-contact" onclick="openForm();return false;">Contact</a>
+  </nav>
+</header>
+<main>
+<section id="stock" class="service-section alt">
+  <div class="service-head reveal">
+    <p class="section-label">Gestion de stock &amp; matières premières</p>
+    <h1 class="page-title">Logiciel de gestion de stock : <em>fini les ruptures et les DLC oubliées</em></h1>
+    <p class="page-lead">Entrées et sorties par lot, DLC/DDM surveillées, seuils d'alerte, inventaires et valorisation : un <strong>logiciel de gestion de stock</strong> conçu pour les contraintes réelles d'une entreprise agroalimentaire, pas pour un entrepôt de quincaillerie.</p>
+    <div class="page-meta">
+      <span>Lots &amp; DLC/DDM</span>
+      <span>Matières premières</span>
+      <span>Inventaires rapides</span>
+      <span>Saisie tablette</span>
+    </div>
+  </div>
+  <div class="page-grid">
+    <article class="prose reveal">
+      <h3>Un stock agroalimentaire n'est pas un stock comme les autres</h3>
+      <p>Dans la plupart des entreprises, un stock c'est une quantité. Dans l'agroalimentaire, c'est une quantité <strong>avec une date, un lot, un fournisseur et une destination</strong>. Deux palettes du même produit ne sont pas interchangeables : l'une part en production ce matin, l'autre doit être consommée avant vendredi.</p>
+      <ul>
+        <li>une <strong>DLC dépassée</strong> qui reste en stock et se retrouve en production ;</li>
+        <li>une <strong>rupture</strong> découverte au moment de lancer une recette ;</li>
+        <li>des <strong>écarts d'inventaire</strong> impossibles à expliquer faute d'historique ;</li>
+        <li>des <strong>prix fournisseurs</strong> qui changent sans que le coût de revient suive ;</li>
+        <li>et un fichier Excel que trois personnes modifient en même temps.</li>
+      </ul>
+      <p>Un logiciel de stock correctement conçu supprime ces angles morts, sans transformer vos équipes en opérateurs de saisie.</p>
+
+      <h3>Ce que fait le logiciel de gestion de stock</h3>
+      <div class="feature-list">
+        <div class="feature-item">
+          <h3>Réception et sortie par lot</h3>
+          <p>Chaque entrée porte le fournisseur, le numéro de lot, la quantité, la DLC ou la DDM et le bon de livraison. Chaque sortie indique qui, quand, pour quelle production ou quel client.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Alertes DLC / DDM</h3>
+          <p>Les échéances sont calculées automatiquement, avec un écran « à consommer en priorité » et des alertes avant échéance. Le principe du premier entré, premier sorti devient une règle appliquée par l'outil, plus une consigne affichée au mur.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Seuils et réapprovisionnement</h3>
+          <p>Un seuil par article et par saison, une liste de ce qui manque, des quantités suggérées selon la consommation réelle. Vous commandez ce qu'il faut, quand il faut.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Inventaires et écarts</h3>
+          <p>Inventaire complet ou tournant par zone, saisie au scanner ou à la main, comparaison avec le stock théorique et justification des écarts. L'historique reste consultable.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Valorisation et coûts</h3>
+          <p>Valeur du stock, prix moyen pondéré, évolution des prix fournisseurs. Vos coûts de revient s'appuient sur des chiffres à jour, pas sur un prix de l'an dernier.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Fournisseurs et documents</h3>
+          <p>Fiches fournisseurs, conditions, documents et historique des livraisons au même endroit. En cas de problème qualité, on retrouve le lot et le bon de livraison en quelques secondes.</p>
+        </div>
+      </div>
+
+      <h3>Un exemple concret : la réception du matin</h3>
+      <p>Le camion arrive à 7h30. L'opérateur scanne ou sélectionne l'article, saisit la quantité, la DLC et le numéro de lot. En dix secondes, le stock est à jour, l'étiquette peut être imprimée, et le lien avec la traçabilité est créé : si un produit pose problème plus tard, on saura de quel lot il vient.</p>
+      <p>Le gérant, lui, n'a rien à ressaisir. Il voit au même moment ce qui est entré, ce qui manque et ce qui expire cette semaine.</p>
+
+      <h3>Pour qui ce logiciel est pensé</h3>
+      <ul>
+        <li><strong>entreprises agroalimentaires</strong> avec matières premières, emballages et produits finis ;</li>
+        <li><strong>métiers de bouche</strong> qui doivent suivre DLC, lots et allergènes au quotidien ;</li>
+        <li><strong>ateliers de transformation</strong> avec de nombreuses références et plusieurs emplacements ;</li>
+        <li><strong>TPE et PME</strong> qui ont dépassé le stade du fichier Excel partagé.</li>
+      </ul>
+
+      <h3>Comment on travaille ensemble</h3>
+      <div class="steps">
+        <div class="step">
+          <h3>On part de votre fichier actuel</h3>
+          <p>Vos articles, vos unités, vos fournisseurs, vos habitudes de saisie. Je reprends l'existant au lieu de vous imposer une nomenclature théorique.</p>
+        </div>
+        <div class="step">
+          <h3>On construit les mouvements essentiels</h3>
+          <p>Réception, sortie, inventaire : trois gestes que vos équipes font tous les jours. Le reste (valorisation, exports, tableaux de bord) vient ensuite, sans alourdir la saisie.</p>
+        </div>
+        <div class="step">
+          <h3>On met en service sans arrêter l'atelier</h3>
+          <p>Reprise des stocks en cours, formation courte, ajustements les premières semaines. Vos équipes continuent de produire pendant la bascule.</p>
+        </div>
+      </div>
+
+      <h3>Ce que ça change, concrètement</h3>
+      <ul>
+        <li>moins de <strong>ruptures</strong> parce que les seuils sont visibles et à jour ;</li>
+        <li>moins de <strong>pertes</strong> parce que les DLC sont surveillées et sorties dans le bon ordre ;</li>
+        <li>des <strong>inventaires plus rapides</strong>, avec un historique qui explique les écarts ;</li>
+        <li>des <strong>coûts de revient fiables</strong>, donc des prix justes ;</li>
+        <li>et une <strong>traçabilité</strong> déjà en place quand un client ou un contrôle la demande.</li>
+      </ul>
+    </article>
+    <aside class="aside">
+      <div class="aside-card">
+        <h3>Un stock difficile à tenir ?</h3>
+        <p>Dites-moi combien de références vous gérez et où ça coince : je vous réponds sous 24h avec une piste concrète.</p>
+        <button class="btn btn-primary" onclick="openForm()">Décrire mon besoin →</button>
+      </div>
+      <div class="aside-card">
+        <h3>Sur le même thème</h3>
+        <div class="aside-links">
+          <a href="haccp.html">Logiciel HACCP et plan de maîtrise sanitaire</a>
+          <a href="production-tracabilite.html">Production, traçabilité et étiquetage</a>
+          <a href="index.html#realisations">Voir les logiciels déjà en service</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="cta-inner reveal">
+    <h2>Un process à digitaliser ?</h2>
+    <p>Stocks, plan de maîtrise sanitaire, production, traçabilité : dites-moi en une phrase où vous perdez du temps. Je vous réponds sous 24h avec une première piste concrète.</p>
+    <button class="btn btn-primary" onclick="openForm()">Parler de mon besoin →</button>
+  </div>
+</section>
+
+<section id="faq" class="faq-section">
+  <div class="legal-section reveal">
+    <p class="section-label">Questions fréquentes — gestion de stock</p>
+    <h2 class="section-title">Vos questions <em>sur la gestion de stock</em></h2>
+    <div class="faq-list">
+<details open>
+        <summary>Je gère déjà mon stock sur Excel, pourquoi changer ?</summary>
+        <p>Excel fonctionne très bien à une personne et sur un seul poste. Il devient fragile dès que plusieurs personnes saisissent, que les lots et les DLC entrent en jeu, ou que vous devez prouver l'historique. Le logiciel reprend votre logique — mêmes colonnes, mêmes calculs — en ajoutant les alertes, les droits et la traçabilité.</p>
+      </details>
+<details>
+        <summary>Comment sont gérées les DLC et les DDM ?</summary>
+        <p>Chaque réception porte sa date, son lot et sa quantité. Le logiciel calcule les échéances, alerte avant que ça devienne critique, et permet de sortir en priorité ce qui expire le plus tôt. Une DLC dépassée reste visible dans l'historique : elle n'est jamais effacée.</p>
+      </details>
+<details>
+        <summary>Est-ce que ça remplace un logiciel de caisse ou de comptabilité ?</summary>
+        <p>Non. Il gère les <strong>matières, les lots et les mouvements</strong> ; la caisse et la comptabilité restent chez leurs outils. Des exports sont prévus pour que les chiffres circulent sans double saisie.</p>
+      </details>
+<details>
+        <summary>Et si mes fournisseurs changent leurs conditionnements ?</summary>
+        <p>C'est prévu : chaque article peut avoir plusieurs conditionnements et unités, avec des conversions. Vous saisissez en colis, en kilos ou en litres selon ce que vous avez en main, et le stock se tient dans l'unité de référence.</p>
+      </details>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  © 2026 JaySolution · Logiciels sur mesure pour l'agroalimentaire · Tous droits réservés
+  <div class="footer-links">
+    <a href="haccp.html">Logiciel HACCP</a>
+    <a href="stock.html">Gestion de stock</a>
+    <a href="production-tracabilite.html">Production &amp; traçabilité</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="confidentialite.html">Confidentialité</a>
+  </div>
+</footer>
+<!-- MODAL -->
+<div class="overlay" id="overlay" onclick="handleOverlayClick(event)">
+  <div class="modal">
+    <button class="close-btn" onclick="closeForm()">✕</button>
+    <h3>Parlons de votre process</h3>
+    <p class="modal-sub">Réponse sous 24h</p>
+
+    <div class="form-group">
+      <label>Nom</label>
+      <input id="name" placeholder="Jean Dupont">
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input id="email" type="email" placeholder="jean@email.com">
+    </div>
+<div class="form-group">
+  <label>Téléphone</label>
+  <input id="phone" type="tel" placeholder="06 12 34 56 78" required>
+</div>
+    <div class="form-group">
+      <label>Message</label>
+      <textarea id="message" placeholder="Décrivez votre process : stock, HACCP, production, traçabilité…"></textarea>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="sendForm()">Envoyer →</button>
+      <button class="btn btn-outline" onclick="closeForm()">Annuler</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+<script src="assets/app.js"></script>
+</body>
+</html>
